@@ -29,18 +29,19 @@ Usage:
 __author__ = "Shawn Yu"
 __version__ = "0.2.0"
 
-from .dataset4torch import TorchDataset
-from .reshaper import reshape_to_grayscale
-from .TS4classification import TimeSeriesTorchDatasetForClassification
-from .TS4next_step import TimeSeriesTorchDatasetForPredNextStep
-from .mask_mapper import mask2index
+from .auto_dataset import TorchDataset
+from .grayscale_reshaper import reshape_to_grayscale
+from .image_mask_mapper import image_mask_to_index
 from .sem_seg import TorchDataset4SemanticSegmentation
+from .TS_classification import TimeSeriesTorchDatasetForClassification
+from .TS_next_step import TimeSeriesTorchDatasetForPredNextStep
 
 __all__ = [
     "TorchDataset",
     "reshape_to_grayscale",
+    "image_mask_to_index",
+    "TorchDataset4SemanticSegmentation",
     "TimeSeriesTorchDatasetForClassification",
     "TimeSeriesTorchDatasetForPredNextStep",
-    "mask2index",
-    "TorchDataset4SemanticSegmentation",
+
 ]
