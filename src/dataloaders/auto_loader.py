@@ -3,14 +3,14 @@
 # @Time     :   2025/11/24 23:08
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   dataloader4torch.py
+# @File     :   auto_loader.py
 # @Desc     :
 
 from torch import Tensor, stack
 from torch.utils.data import DataLoader, Dataset
 from torch.nn.utils.rnn import pad_sequence
 
-from src.datasets.dataset4torch import TorchDataset
+from src.datasets.auto_dataset import TorchDataset
 from src.utils.highlighter import starts, lines
 
 
