@@ -12,7 +12,7 @@ from torch import (Tensor, nn,
                    randint)
 from typing import override, Literal
 
-from src.configs.cfg_types import SeqMergeMethods, SeqStrategies, SeqNets, AttnScorer
+from src.configs.cfg_enums import SeqMergeMethods, SeqStrategies, SeqNets, AttnScorer
 from src.nets.base_seq2seq import BaseSeqNet
 from src.nets.seq_decoder import SeqDecoder
 from src.nets.seq_decoder4attn import SeqDecoderWithAttn
