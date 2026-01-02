@@ -3,7 +3,7 @@
 # @Time     :   2025/12/3 23:20
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   cfg_types.py
+# @File     :   cfg_enums.py
 # @Desc     :   
 
 from enum import StrEnum, unique
