@@ -29,7 +29,7 @@ Usage:
 __author__ = "Shawn Yu"
 __version__ = "0.2.0"
 
-from .dataloader4torch import TorchDataLoader
+from .auto_loader import TorchDataLoader
 
 __all__ = [
     "TorchDataLoader",
