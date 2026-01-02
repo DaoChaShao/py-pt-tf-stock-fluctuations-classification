@@ -3,7 +3,7 @@
 # @Time     :   2025/12/30 15:53
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   trainer4seq2seq_transformer.py
+# @File     :   trainer4seq2seq_tf.py
 # @Desc     :   
 
 from PySide6.QtCore import QObject, Signal
@@ -13,7 +13,7 @@ from torch import nn, optim, no_grad, save, device, tensor, exp, Tensor
 from typing import Literal
 
 from src.dataloaders import TorchDataLoader
-from src.trainers.calc4seq_text_quilty import TextQualityScorer
+from src.trainers.calc_seq_text_quilty import TextQualityScorer
 from src.utils.logger import record_log
 from src.utils.PT import get_device
 
