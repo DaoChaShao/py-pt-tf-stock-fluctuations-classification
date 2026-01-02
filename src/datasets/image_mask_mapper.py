@@ -3,14 +3,14 @@
 # @Time     :   2025/11/23 18:19
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   mask_mapper.py
+# @File     :   image_mask_mapper.py
 # @Desc     :   
 
 from PIL import Image
 from numpy import ndarray, array, float32, unique
 
 
-def mask2index(mask: Image.Image) -> tuple[ndarray, ndarray]:
+def image_mask_to_index(mask: Image.Image) -> tuple[ndarray, ndarray]:
     """ Convert mask pixel values to class IDs """
     # Transfer PIL Image to numpy array - shape: (H, W, C) or (H, W)
     arr = array(mask)
