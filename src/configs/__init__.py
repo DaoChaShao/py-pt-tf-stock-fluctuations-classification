@@ -39,8 +39,8 @@ from .cfg_cnn import CONFIG4CNN, Configuration4CNN, CNNParams
 from .cfg_dl import CONFIG4DL, Config4DL, DataPreprocessor, Hyperparameters
 from .cfg_mlp import CONFIG4MLP, Configuration4MLP, MLPParams
 from .cfg_rnn import CONFIG4RNN, Configuration4RNN, RNNParams
-from .cfg_seq2seq_transformer import CONFIG4S2STF
-from .cfg_types import (AttnHeads, AttnScorer,
+from .cfg_seq2seq_tf import CONFIG4S2STF
+from .cfg_enums import (AttnHeads, AttnScorer,
                         Languages,
                         SeqMergeMethods, SeqNets, SeqStrategies,
                         Tasks,
