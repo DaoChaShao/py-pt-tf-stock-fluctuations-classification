@@ -3,7 +3,7 @@
 # @Time     :   2025/12/30 14:41
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   cfg_seq2seq_transformer.py
+# @File     :   cfg_seq2seq_tf.py
 # @Desc     :   
 
 from dataclasses import dataclass, field
