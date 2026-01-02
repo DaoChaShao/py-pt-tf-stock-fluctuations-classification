@@ -11,7 +11,7 @@ from torch import (Tensor, nn, zeros_like, device,
                    randint)
 from typing import override, Literal
 
-from src.configs.cfg_types import SeqNets
+from src.configs.cfg_enums import SeqNets
 from src.nets.base_ann import BaseANN
 
 
