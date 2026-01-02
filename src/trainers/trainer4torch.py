@@ -12,8 +12,8 @@ from json import dumps
 from torch import nn, optim, no_grad, save, device
 
 from src.dataloaders import TorchDataLoader
-from src.trainers.calc4classification import calculator_for_classification
-from src.trainers.calc4cm import calculator_for_confusion_metrics
+from src.trainers.calc_classification import calculator_for_classification
+from src.trainers.calc_cm import calculator_for_confusion_metrics
 from src.utils.logger import record_log
 from src.utils.PT import get_device
 
