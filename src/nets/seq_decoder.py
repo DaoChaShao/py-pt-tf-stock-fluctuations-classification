@@ -11,7 +11,7 @@ from torch import (Tensor, nn, device, zeros_like,
                    randint)
 from typing import final, Literal, Final
 
-from src.configs.cfg_types import SeqNets
+from src.configs.cfg_enums import SeqNets
 from src.nets.seq_encoder import SeqEncoder
 
 
