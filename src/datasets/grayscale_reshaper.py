@@ -3,7 +3,7 @@
 # @Time     :   2025/11/24 23:34
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   reshaper.py
+# @File     :   grayscale_reshaper.py
 # @Desc     :   
 
 from torch import Tensor, randn
