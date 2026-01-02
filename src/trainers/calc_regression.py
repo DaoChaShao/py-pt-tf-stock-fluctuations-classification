@@ -3,7 +3,7 @@
 # @Time     :   2025/12/4 16:28
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   calc4regression.py
+# @File     :   calc_regression.py
 # @Desc     :   
 
 from numpy import ndarray, sqrt, array
