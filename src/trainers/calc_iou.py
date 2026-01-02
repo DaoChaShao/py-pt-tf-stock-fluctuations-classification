@@ -3,7 +3,7 @@
 # @Time     :   2025/12/4 16:39
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   calc4iou.py
+# @File     :   calc_iou.py
 # @Desc     :   
 
 from torch import Tensor, sigmoid
