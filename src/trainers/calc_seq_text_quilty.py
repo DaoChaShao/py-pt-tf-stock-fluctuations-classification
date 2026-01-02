@@ -3,7 +3,7 @@
 # @Time     :   2025/12/12 14:20
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   calc4seq_text_quilty.py
+# @File     :   calc_seq_text_quilty.py
 # @Desc     :   
 
 from torch import Tensor, tensor, device
