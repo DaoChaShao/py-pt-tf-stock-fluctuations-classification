@@ -3,7 +3,7 @@
 # @Time     :   2025/11/24 23:20
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   dataset4torch.py
+# @File     :   auto_dataset.py
 # @Desc     :
 
 from numpy import ndarray
