@@ -70,14 +70,14 @@ from .seq2seq_task_gru import SeqToSeqGRU
 from .seq2seq_task_lstm import SeqToSeqLSTM
 from .seq2seq_task_rnn import SeqToSeqRNN
 
-from .seq2seq_transformer import Seq2SeqTransformerNet
+from .seq2seq_tf import Seq2SeqTransformerNet
 
 from .seq_decoder import SeqDecoder
 from .seq_decoder4attn import SeqDecoderWithAttn
-from .seq_encoder4transformer import TransformerSeqEncoder
+from .seq_encoder4tf import TransformerSeqEncoder
 
 from .seq_encoder import SeqEncoder
-from .seq_decoder4transformer import TransformerSeqDecoder
+from .seq_decoder4tf import TransformerSeqDecoder
 
 from .unet4layers4sem import Standard4LayersUNetClassification
 from .unet5layers4sem import Standard5LayersUNetForClassification
