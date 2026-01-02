@@ -3,7 +3,7 @@
 # @Time     :   2025/12/29 15:59
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   seq2seq_transformer.py
+# @File     :   seq2seq_tf.py
 # @Desc     :   
 
 from pathlib import Path
@@ -14,8 +14,8 @@ from torch import (nn, Tensor, save, load,
                    randint)
 from typing import final, Literal
 
-from src.nets.seq_encoder4transformer import TransformerSeqEncoder
-from src.nets.seq_decoder4transformer import TransformerSeqDecoder
+from src.nets.seq_encoder4tf import TransformerSeqEncoder
+from src.nets.seq_decoder4tf import TransformerSeqDecoder
 
 WIDTH: int = 64
 
