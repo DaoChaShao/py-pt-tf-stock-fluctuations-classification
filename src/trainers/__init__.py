@@ -43,11 +43,11 @@ Usage:
 __author__ = "Shawn Yu"
 __version__ = "0.2.0"
 
-from .calc4classification import calculator_for_classification
-from .calc4cm import calculator_for_confusion_metrics
-from .calc4iou import calc_binary_sem_seg_iou
-from .calc4regression import calculator_for_regression
-from .calc4seq_text_quilty import TextQualityScorer
+from .calc_classification import calculator_for_classification
+from .calc_cm import calculator_for_confusion_metrics
+from .calc_iou import calc_binary_sem_seg_iou
+from .calc_regression import calculator_for_regression
+from .calc_seq_text_quilty import TextQualityScorer
 from .trainer4sem_seg import TorchTrainer4UNetSemSeg
 from .trainer4seq2seq import TorchTrainer4SeqToSeq
 from .trainer4torch import TorchTrainer
