@@ -11,7 +11,7 @@ from PIL import Image
 from torch import Tensor, from_numpy
 from torch.utils.data import Dataset
 
-from src.datasets.mask_mapper import mask2index
+from src.datasets.image_mask_mapper import image_mask_to_index
 
 
 class TorchDataset4SemanticSegmentation(Dataset):
@@ -33,7 +33,7 @@ class TorchDataset4SemanticSegmentation(Dataset):
         img_mask: Image.Image = Image.open(self._mask_paths[index])
 
         image_arr: ndarray = array(img_image)
-        mask_arr, _ = mask2index(img_mask)
+        mask_arr, _ = image_mask_to_index(img_mask)
 
         if self._transformer:
             augmented = self._transformer(image=image_arr, mask=mask_arr)
