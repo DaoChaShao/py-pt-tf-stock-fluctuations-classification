@@ -11,7 +11,7 @@ from torch import (Tensor, nn,
                    randint)
 from typing import override, Literal
 
-from src.configs.cfg_types import Tasks
+from src.configs.cfg_enums import Tasks
 from src.nets.base_ann import BaseANN
 
 
