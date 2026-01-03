@@ -10,7 +10,7 @@
 from pathlib import Path
 from sqlite3 import connect
 
-from src.configs.cfg_base import CONFIG
+from src.configs.cfg_base import BASE_CONFIG
 
 WIDTH: int = 64
 
@@ -26,7 +26,7 @@ class SQLiteIII:
         """
         self._connection = None
         self._cursor = None
-        self._db = str(db_path) if db_path else CONFIG.FILEPATHS.SQLITE
+        self._db = str(db_path) if db_path else BASE_CONFIG.FILE_PATHS.SQLITE
         self._table = table
         self._cols = cols
 
