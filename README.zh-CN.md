@@ -38,6 +38,11 @@
     - 默认情况下数据可能存在类别不平衡，需要考虑采样或重加权等策略。
     - 该数据集非常适合用来练习 Hugging Face 的 `datasets` 加载流程、Tokenizer、Transformer 模型训练与评估。
 
++ 路径
+
+- 你可以通过运行命令 `~/.cache/huggingface/datasets` 在你本地找到通过 Hugging Face 下载的数据。你也可以通过在终端运行
+  `open ~/.cache/huggingface/datasets`来找到下载数据。
+
 **快速开始**
 ---
 
