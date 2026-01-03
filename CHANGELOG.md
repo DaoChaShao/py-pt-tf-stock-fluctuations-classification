@@ -1,10 +1,18 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-02)
+## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-03)
 
 ### Features
 
+- add uv.lock ([4a788c0](https://github.com///commit/4a788c04ff808018f22016332037dff30df8c532))
+- add dataset loading and processing functionalities in TF.py ([53c7ca2](https://github.com///commit/53c7ca236eefa6f80c372f763ab4563cbd1ee5d6))
+- add datasets dependency for data handling ([2061eec](https://github.com///commit/2061eecca7cc3c7c28ff9d5552e9d98336c80681))
+- add data processing functionality in processor.py ([604018a](https://github.com///commit/604018af9b0b2c5875ed8ddcdfb8f1158f02230d))
+- add data preprocessing script for Hugging Face datasets ([31fdf8b](https://github.com///commit/31fdf8b85a7f19fa080a8ed975e4caf19f144676))
+- add financial_classification-train.arrow ([5bbebf0](https://github.com///commit/5bbebf04a9af97f9f43e502f674f397e7cba71a6))
+- add dataset_info.json for financial classification dataset metadata ([772b31b](https://github.com///commit/772b31be2798a1c8ee80f80a076968b36764fe30))
+- add HuggingFaceConfiguration and HFParams classes for model configuration ([9ec6f0f](https://github.com///commit/9ec6f0fd0308f1d94c24437ca9d6883d4563b5c8))
 - add unet_edge.py module for Edge Aware Loss implementation ([b513eb8](https://github.com///commit/b513eb8098f79625ab9c5227c4554782ea398729))
 - add unet_dnf.py module for combined Dice, BCE, and Focal loss implementation ([a21e60d](https://github.com///commit/a21e60d5b4443e051f57be43820bbcb36d8b04bc))
 - add unet_dice.py module for Dice loss implementation in semantic segmentation ([878c7dc](https://github.com///commit/878c7dcfeb5f0e92abb6b08f76ac391ff84d42b3))
@@ -81,13 +89,29 @@
 - add .gitignore to exclude Python-generated files and IDE configurations ([c6dab0d](https://github.com///commit/c6dab0dd78e5f8256232e39b1393b14c6268b3f9))
 - add configuration files for English and Chinese pipelines with accuracy metrics ([cc07460](https://github.com///commit/cc0746048fbe91fbbaddecf1b0792a64acc78fa8))
 - add CHANGELOG.md for version 0.1.0 with features and bug fixes ([d23ed69](https://github.com///commit/d23ed69f9289bd331dc1dce91db4ce9bfb34a1a1))
-- add uv.lock ([ef56d1d](https://github.com///commit/ef56d1dc044b8e828ffadca3f0f31dfe107952a2))
 - add Chinese README with project overview and quick start instructions ([47d54d8](https://github.com///commit/47d54d8a81dd32486bf0f6133ac95ef7257a0043))
 - add dependencies and configuration for git-changelog in pyproject.toml ([45bf70e](https://github.com///commit/45bf70ef78f3ed6afaaa401e2931048e23d3cf5e))
 - add .gitignore to exclude Python and IDE-specific files ([ee5b847](https://github.com///commit/ee5b847ea1fcb5533b584a8217667c733ba2795b))
 
 ### Bug Fixes
 
+- rename unet5layers4sem.py to unet5layers_sem.py ([8610b14](https://github.com///commit/8610b14267e28b6894e170e547a5f33e60931639))
+- rename unet4layers4sem.py to unet4layers_sem.py ([45bfcc1](https://github.com///commit/45bfcc17a2da119e67e08cf7a7e1f9d0e7b3f85e))
+- update import references for UNet modules in __init__.py ([5dec65f](https://github.com///commit/5dec65fa14c57d6d7ac71650dd9412a06a6be0e6))
+- update import reference for UNET configuration in unet4layers4sem.py ([3aa1fdc](https://github.com///commit/3aa1fdc775cff97f84e6f63ea985dd2ad4bc6cbe))
+- update database configuration reference in SQL.py ([6c60c18](https://github.com///commit/6c60c1838aa7ff1e1cd5b5f8817ca78e35599e62))
+- update import for log directory configuration to use BASE_CONFIG ([f82066e](https://github.com///commit/f82066e8cb75a03da63271d4f5fe93b20e5e2cd1))
+- rename Configuration4UNet class to UNetConfiguration and update variable names for consistency ([6666f8e](https://github.com///commit/6666f8ee78e09e755dbadd7354afc176624b3ef7))
+- rename Configuration4S2STransformer class to S2STransformerConfiguration and update variable names for consistency ([5501697](https://github.com///commit/5501697718fcb8a6abe973734bb2c4b2a5014a58))
+- rename Configuration4RNN class to RNNConfiguration and update variable names for consistency ([fc0551f](https://github.com///commit/fc0551f6706ebd353246b7aea65772b138e593b2))
+- rename Configuration4MLP class to MLPConfiguration and update variable names for consistency ([b608ff0](https://github.com///commit/b608ff0a0e3c1448dce8532c16d64dc3c815c894))
+- rename Tokens class to SpecialTokens for improved clarity ([3ee89ee](https://github.com///commit/3ee89eea86a3bf3210d6cd2b1034dc9ecf489291))
+- rename Config4DL class to DLConfiguration and update variable names for consistency ([092bfa9](https://github.com///commit/092bfa9b0d2ab7656aed04387916fd2e78ba802e))
+- rename Configuration4CNN class to CNNConfiguration and update variable names for consistency ([622e7d6](https://github.com///commit/622e7d6b82c42b911fc8af085391dd042eaa9536))
+- refactor configuration classes for improved clarity and consistency ([7096fa3](https://github.com///commit/7096fa3758559d004b65145525055d4458e8efc4))
+- rename configuration variables for consistency and clarity ([8c9574c](https://github.com///commit/8c9574c19c83c8e2a2e1f0e4cf8e60f85d92684b))
+- add .gitignore to exclude Python-generated files and IDE-specific directories ([b0d87fc](https://github.com///commit/b0d87fce2c1fa25bef9330d1e3e629077440b08b))
+- update CHANGELOG.md with recent bug fixes and feature additions ([9588ba6](https://github.com///commit/9588ba67e83f30f21147f48619008744d90f980a))
 - rename TS4next_step.py to TS_next_step.py ([8b1788d](https://github.com///commit/8b1788d55715e3889bda2249ca1b705249a300db))
 - rename TS4classification.py to TS_classification.py ([22faf61](https://github.com///commit/22faf61fc777e7eefaf302bf7ef574ef9ca42e62))
 - update import paths for classification and confusion metrics calculators in trainer4torch.py ([e583fb6](https://github.com///commit/e583fb6ddc1e33cc3ab144468ee624d0df2104bb))
@@ -130,5 +154,7 @@
 
 ### Docs
 
+- add local data path instructions for Hugging Face datasets in Chinese README ([84439e6](https://github.com///commit/84439e63c88cbcd27bb68e11f317ed88832fff02))
+- update README with local data path instructions for Hugging Face datasets ([1c1fece](https://github.com///commit/1c1fece4e5088ee1b2e51f07b84499504ccc66dd))
 - update CHANGELOG.md with recent feature additions and bug fixes ([0539fec](https://github.com///commit/0539fec515ba5c18b18e59a0aec331a9ec9359dc))
 
