@@ -23,13 +23,13 @@ class RNNParams:
 
 
 @dataclass
-class Configuration4RNN:
+class RNNConfiguration:
     DATABASE: Database = field(default_factory=Database)
-    FILEPATHS: FilePaths = field(default_factory=FilePaths)
+    FILE_PATHS: FilePaths = field(default_factory=FilePaths)
     HYPERPARAMETERS: Hyperparameters = field(default_factory=Hyperparameters)
     PARAMETERS: RNNParams = field(default_factory=RNNParams)
     PREPROCESSOR: DataPreprocessor = field(default_factory=DataPreprocessor)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
-CONFIG4RNN = Configuration4RNN()
+RNN_CONFIG: RNNConfiguration = RNNConfiguration()
