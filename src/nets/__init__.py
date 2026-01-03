@@ -79,8 +79,8 @@ from .seq_encoder4tf import TransformerSeqEncoder
 from .seq_encoder import SeqEncoder
 from .seq_decoder4tf import TransformerSeqDecoder
 
-from .unet4layers4sem import Standard4LayersUNetClassification
-from .unet5layers4sem import Standard5LayersUNetForClassification
+from .unet4layers_sem import Standard4LayersUNetClassification
+from .unet5layers_sem import Standard5LayersUNetForClassification
 
 __all__ = [
     "AdditiveAttention",
