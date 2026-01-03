@@ -18,13 +18,13 @@ class MLPParams:
 
 
 @dataclass
-class Configuration4MLP:
+class MLPConfiguration:
     DATABASE: Database = field(default_factory=Database)
-    FILEPATHS: FilePaths = field(default_factory=FilePaths)
+    FILE_PATHS: FilePaths = field(default_factory=FilePaths)
     HYPERPARAMETERS: Hyperparameters = field(default_factory=Hyperparameters)
     PARAMETERS: MLPParams = field(default_factory=MLPParams)
     PREPROCESSOR: DataPreprocessor = field(default_factory=DataPreprocessor)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
-CONFIG4MLP = Configuration4MLP()
+MLP_CONFIG: MLPConfiguration = MLPConfiguration()
