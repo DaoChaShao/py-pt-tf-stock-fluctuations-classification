@@ -43,6 +43,11 @@ We use the `SelmaNajih001/FinancialClassification` dataset available on Hugging 
     - This dataset is well-suited for practicing NLP classification with Hugging Face Transformers, including data
       loading with `datasets`, tokenization, model training with `Trainer`, and evaluation.
 
++ Path
+    - You can locate the data in you Mac using the command `~/.cache/huggingface/datasets` when you click the menu bar
+      button, if you plan to find the downloaded data locally. Or, you can run the command
+      `open ~/.cache/huggingface/datasets` using terminal.
+
 **QUICK START**
 ---
 
