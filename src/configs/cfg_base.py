@@ -13,11 +13,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 @dataclass
+class Database:
+    USER: str = ""
+    PASSWORD: str = ""
+    HOST: str = ""
+    PORT: str = ""
+
+
+@dataclass
 class FilePaths:
     API_KEY: Path = BASE_DIR / "data/api_keys.yaml"
-    DATA4ALL: Path = BASE_DIR / "data/cmn.txt"
-    DATA4TRAIN: Path = BASE_DIR / "data/train/"
-    DATA4TEST: Path = BASE_DIR / "data/test/"
+    DATA: Path = BASE_DIR / "data/cmn.txt"
+    DATA_HF: Path = BASE_DIR / "data/financial_classification-train.arrow"
+    DATA_TRAIN: Path = BASE_DIR / "data/train/"
+    DATA_TEST: Path = BASE_DIR / "data/test/"
     DICTIONARY: Path = BASE_DIR / "data/dictionary.json"
     DICTIONARY_CN: Path = BASE_DIR / "data/dictionary_cn.json"
     DICTIONARY_EN: Path = BASE_DIR / "data/dictionary_en.json"
@@ -28,14 +37,6 @@ class FilePaths:
     SPACY_MODEL_EN: Path = BASE_DIR / "models/spacy/en_core_web_md"
     SPACY_MODEL_CN: Path = BASE_DIR / "models/spacy/zh_core_web_md"
     SQLITE: Path = BASE_DIR / "data/sqlite3.db"
-
-
-@dataclass
-class Database:
-    USER: str = ""
-    PASSWORD: str = ""
-    HOST: str = ""
-    PORT: str = ""
 
 
 @dataclass
@@ -54,10 +55,10 @@ class Punctuations:
 
 
 @dataclass
-class Config:
+class BaseConfig:
     DATABASE: Database = field(default_factory=Database)
-    FILEPATHS: FilePaths = field(default_factory=FilePaths)
+    FILE_PATHS: FilePaths = field(default_factory=FilePaths)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
-CONFIG = Config()
+BASE_CONFIG = BaseConfig()
