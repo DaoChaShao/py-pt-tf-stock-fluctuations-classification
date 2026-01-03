@@ -34,42 +34,45 @@ Usage:
 __author__ = "Shawn Yu"
 __version__ = "0.3.0"
 
-from .cfg_base import CONFIG, Config, Database, FilePaths, Punctuations
-from .cfg_cnn import CONFIG4CNN, Configuration4CNN, CNNParams
-from .cfg_dl import CONFIG4DL, Config4DL, DataPreprocessor, Hyperparameters
-from .cfg_mlp import CONFIG4MLP, Configuration4MLP, MLPParams
-from .cfg_rnn import CONFIG4RNN, Configuration4RNN, RNNParams
-from .cfg_seq2seq_tf import CONFIG4S2STF
+from .cfg_base import BASE_CONFIG, BaseConfig, Database, FilePaths, Punctuations
+from .cfg_cnn import CNN_CONFIG, CNNConfiguration, CNNParams
+from .cfg_dl import DL_CONFIG, DLConfiguration, DataPreprocessor, Hyperparameters
 from .cfg_enums import (AttnHeads, AttnScorer,
                         Languages,
                         SeqMergeMethods, SeqNets, SeqStrategies,
                         Tasks,
-                        Tokens,
+                        SpecialTokens,
                         SeqSeparator)
-from .cfg_unet import CONFIG4UNET, Configuration4UNet, UNetParams
+from .cfg_hf import HF_CONFIG, HuggingFaceConfiguration, HFParams
+from .cfg_mlp import MLP_CONFIG, MLPConfiguration, MLPParams
+from .cfg_rnn import RNN_CONFIG, RNNConfiguration, RNNParams
+from .cfg_seq2seq_tf import S2STF_CONFIG, S2STransformerConfiguration, TransformerParams
+from .cfg_unet import UNET_CONFIG, UNetConfiguration, UNetParams
 from .parser import set_argument_parser
 
 __all__ = [
-    "CONFIG", "Config", "Database", "FilePaths", "Punctuations",
+    "BASE_CONFIG", "BaseConfig", "Database", "FilePaths", "Punctuations",
 
-    "CONFIG4DL", "Config4DL", "DataPreprocessor", "Hyperparameters",
+    "DL_CONFIG", "DLConfiguration", "DataPreprocessor", "Hyperparameters",
 
-    "CONFIG4CNN", "Configuration4CNN", "CNNParams",
-
-    "CONFIG4MLP", "Configuration4MLP", "MLPParams",
-
-    "CONFIG4RNN", "Configuration4RNN", "RNNParams",
-
-    "CONFIG4S2STF",
+    "CNN_CONFIG", "CNNConfiguration", "CNNParams",
 
     "AttnHeads", "AttnScorer",
     "Languages",
     "SeqMergeMethods", "SeqNets", "SeqStrategies",
     "Tasks",
-    "Tokens",
+    "SpecialTokens",
     "SeqSeparator",
 
-    "CONFIG4UNET", "Configuration4UNet", "UNetParams",
+    "HF_CONFIG", "HuggingFaceConfiguration", "HFParams",
+
+    "MLP_CONFIG", "MLPConfiguration", "MLPParams",
+
+    "RNN_CONFIG", "RNNConfiguration", "RNNParams",
+
+    "S2STF_CONFIG", "S2STransformerConfiguration", "TransformerParams",
+
+    "UNET_CONFIG", "UNetConfiguration", "UNetParams",
 
     "set_argument_parser"
 ]
