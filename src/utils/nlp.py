@@ -15,7 +15,7 @@ from stqdm import stqdm
 from tqdm import tqdm
 from typing import Literal
 
-from src.configs.cfg_base import CONFIG
+from src.configs.cfg_base import BASE_CONFIG
 from src.utils.decorator import timer
 
 
@@ -143,10 +143,10 @@ class SpaCyBatchTokeniser:
         """ Enter the context manager """
         match self._lang:
             case "cn":
-                self._nlp = load(CONFIG.FILEPATHS.SPACY_MODEL_CN)
+                self._nlp = load(BASE_CONFIG.FILEPATHS.SPACY_MODEL_CN)
                 # print("SpaCy Chinese Model initialized.")
             case "en":
-                self._nlp = load(CONFIG.FILEPATHS.SPACY_MODEL_EN)
+                self._nlp = load(BASE_CONFIG.FILEPATHS.SPACY_MODEL_EN)
                 # print(f"SpaCy English Model initialized.")
             case _:
                 raise ValueError(f"Unsupported language: {self._lang}")
