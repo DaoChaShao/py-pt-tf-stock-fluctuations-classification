@@ -57,7 +57,7 @@ class Tasks(StrEnum):
 
 
 @unique
-class Tokens(StrEnum):
+class SpecialTokens(StrEnum):
     PAD = "<PAD>"
     UNK = "<UNK>"
     SOS = "<SOS>"  # Or, call it BOS (Beginning of Sequence)
