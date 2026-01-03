@@ -21,13 +21,13 @@ class CNNParams:
 
 
 @dataclass
-class Configuration4CNN:
+class CNNConfiguration:
     DATABASE: Database = field(default_factory=Database)
-    FILEPATHS: FilePaths = field(default_factory=FilePaths)
+    FILE_PATHS: FilePaths = field(default_factory=FilePaths)
     PARAMETERS: CNNParams = field(default_factory=CNNParams)
     PREPROCESSOR: DataPreprocessor = field(default_factory=DataPreprocessor)
     HYPERPARAMETERS: Hyperparameters = field(default_factory=Hyperparameters)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
-CONFIG4CNN = Configuration4CNN()
+CNN_CONFIG: CNNConfiguration = CNNConfiguration()
