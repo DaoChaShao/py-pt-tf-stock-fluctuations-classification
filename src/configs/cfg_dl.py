@@ -34,12 +34,12 @@ class Hyperparameters:
 
 
 @dataclass
-class Config4DL:
+class DLConfiguration:
     DATABASE: Database = field(default_factory=Database)
-    FILEPATHS: FilePaths = field(default_factory=FilePaths)
+    FILE_PATHS: FilePaths = field(default_factory=FilePaths)
     HYPERPARAMETERS: Hyperparameters = field(default_factory=Hyperparameters)
     PREPROCESSOR: DataPreprocessor = field(default_factory=DataPreprocessor)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
-CONFIG4DL = Config4DL()
+DL_CONFIG: DLConfiguration = DLConfiguration()
