@@ -10,7 +10,7 @@
 from torch import nn, cat, randn
 from torchsummary import summary
 
-from src.configs.cfg_unet import CONFIG4UNET
+from src.configs.cfg_unet import UNET_CONFIG
 
 WIDTH: int = 64
 
@@ -222,8 +222,8 @@ if __name__ == "__main__":
 
         model = Standard4LayersUNetClassification(
             in_channels=3, n_classes=1,
-            height=CONFIG4UNET.PREPROCESSOR.IMAGE_HEIGHT,
-            width=CONFIG4UNET.PREPROCESSOR.IMAGE_WIDTH,
+            height=UNET_CONFIG.PREPROCESSOR.IMAGE_HEIGHT,
+            width=UNET_CONFIG.PREPROCESSOR.IMAGE_WIDTH,
             bilinear=bilinear
         )
         x = randn(1, 3, 256, 256)
