@@ -19,13 +19,13 @@ class UNetParams:
 
 
 @dataclass
-class Configuration4UNet:
+class UNetConfiguration:
     DATABASE: Database = field(default_factory=Database)
-    FILEPATHS: FilePaths = field(default_factory=FilePaths)
+    FILE_PATHS: FilePaths = field(default_factory=FilePaths)
     HYPERPARAMETERS: Hyperparameters = field(default_factory=Hyperparameters)
     PARAMETERS: UNetParams = field(default_factory=UNetParams)
     PREPROCESSOR: DataPreprocessor = field(default_factory=DataPreprocessor)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
-CONFIG4UNET = Configuration4UNet()
+UNET_CONFIG: UNetConfiguration = UNetConfiguration()
