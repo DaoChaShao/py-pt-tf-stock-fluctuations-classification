@@ -29,8 +29,10 @@ Usage:
 __author__ = "Shawn Yu"
 __version__ = "0.2.0"
 
+from .seq2seq_hf_loader import HFDataLoaderForClassification
 from .seq2seq_loader import TorchDataLoader
 
 __all__ = [
+    "HFDataLoaderForClassification",
     "TorchDataLoader",
 ]
