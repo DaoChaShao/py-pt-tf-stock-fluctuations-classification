@@ -19,7 +19,6 @@ class RNNParams:
     EMBEDDING_DIMS: int = 128
     HIDDEN_SIZE: int = 256
     LAYERS: int = 2
-    TEMPERATURE: float = 1.0
 
 
 @dataclass
