@@ -27,6 +27,7 @@ dependencies = [
     "torchmetrics>=1.8.2",
     "torchsummary>=1.5.1",
     "tqdm>=4.67.1",
+    "transformers>=4.57.3",
     "watchdog>=6.0.0",
 ]
 
