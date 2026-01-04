@@ -3,7 +3,7 @@
 # @Time     :   2025/11/24 23:08
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   auto_loader.py
+# @File     :   seq2seq_loader.py
 # @Desc     :
 
 from torch import Tensor, stack
@@ -21,7 +21,7 @@ class TorchDataLoader:
                  dataset: Dataset,
                  batch_size: int = 32, shuffle_state: bool = True,
                  workers: int = 0,
-                 use_batch_pad: bool = False, FEATURES_PAD_VALUE: int = 0, LABELS_PAD_VALUE: int = 0,
+                 use_batch_pad: bool = False, FEATURES_PAD: int = 0, LABELS_PAD: int = 0,
                  batch_first: bool = True, padding_direction: str = "right"
                  ):
         """ Initialise the TorchDataLoader class
@@ -30,36 +30,44 @@ class TorchDataLoader:
         :param shuffle_state: whether to shuffle the data at every epoch
         :param workers: the number of workers to use for data loading
         :param use_batch_pad: whether to pad sequences in the batch
-        :param FEATURES_PAD_VALUE: the padding value for sequences
-        :param LABELS_PAD_VALUE: the padding value for labels, -100 by default for PyTorch loss functions ignore_index
+        :param FEATURES_PAD: the padding value for sequences
+        :param LABELS_PAD: the padding value for labels, -100 by default for PyTorch loss functions ignore_index
         :param batch_first: whether to have batch dimension first
         :param padding_direction: side to apply padding ("right" or "left")
         """
         self._dataset: Dataset = dataset
         self._batches: int = batch_size
         self._shuffle: bool = shuffle_state
+        self._workers: int = workers
         self._batch_pad: bool = use_batch_pad
-        self._PAD4F = FEATURES_PAD_VALUE
-        self._PAD4L = LABELS_PAD_VALUE
+        self._PAD4F: int = FEATURES_PAD
+        self._PAD4L: int = LABELS_PAD
         self._first: bool = batch_first
         self._direction: str = padding_direction
 
-        pin_memory: bool = False if workers == 0 else True
-        print(f"num_workers={workers} | pin_memory={pin_memory}")
-        print()
+        self._loader: DataLoader = self._init_loader()
 
-        pad_in_batch = self._collate_fn if self._batch_pad else None
-        self._loader: DataLoader = DataLoader(
+    def _init_loader(self):
+        """ Initialise the DataLoader
+        :return: DataLoader instance
+        """
+        pin_memory: bool = False if self._workers == 0 else True
+        print(f"num_workers={self._workers} | pin_memory={pin_memory}")
+
+        return DataLoader(
             dataset=self._dataset,
             batch_size=self._batches,
             shuffle=self._shuffle,
-            num_workers=workers,
+            num_workers=self._workers,
             pin_memory=pin_memory,
-            collate_fn=pad_in_batch
+            collate_fn=self._collate_fn if self._batch_pad else None
         )
 
     @property
     def dataset(self) -> Dataset:
+        """ Get the underlying dataset
+        :return: the dataset
+        """
         return self._dataset
 
     def _collate_fn(self, batch: list[tuple[Tensor, Tensor]]) -> tuple[Tensor, Tensor]:
@@ -114,7 +122,7 @@ if __name__ == "__main__":
         dataset=dataset,
         batch_size=2,
         use_batch_pad=True,
-        FEATURES_PAD_VALUE=0,
+        FEATURES_PAD=0,
         padding_direction="right"
     )
 
