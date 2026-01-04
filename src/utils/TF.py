@@ -6,7 +6,9 @@
 # @File     :   TF.py
 # @Desc     :   
 
-from datasets import load_dataset, DatasetDict, Dataset
+from datasets import (load_dataset, DatasetDict, Dataset,
+                      ClassLabel,
+                      load_from_disk)
 from pandas import DataFrame, set_option
 from pathlib import Path
 from transformers import AutoTokenizer, PreTrainedTokenizerFast
@@ -69,10 +71,67 @@ def summary_ds_dict(dataset: DatasetDict, split: str | Literal["train", "valid",
     return df
 
 
+class StratifiedColConverter:
+    """ Stratified Column to ClassLabel Converter """
+
+    def __init__(self, dataset: Dataset, column: str) -> None:
+        self._dataset: Dataset = dataset
+        self._col: str = column
+
+    def _convert_new_col(self, dataset) -> Dataset:
+        """ Create new stratified column with integer labels """
+        out = dataset[self._col]
+        dataset[self._col] = 1 if out > 0 else 0
+
+        return dataset
+
+    def fit(self) -> Dataset:
+        """ Convert stratified column to ClassLabel"""
+        # Create a new label col in place
+        self._dataset = self._dataset.map(self._convert_new_col)
+
+        # Convert to ClassLabel
+        self._dataset = self._dataset.cast_column(self._col, ClassLabel(names=["Negative", "Positive"]))
+
+        return self._dataset
+
+
+def check_label_distribution(dataset_dict: DatasetDict, column: str):
+    """ Check label distribution in dataset
+    :param dataset_dict: dataset object
+    :param column: column name
+    """
+    for split_name, dataset in dataset_dict.items():
+        labels = dataset[column]
+        total = len(labels)
+
+        if isinstance(dataset.features[column], ClassLabel):
+            class_names = dataset.features[column].names
+            label_counts = {name: 0 for name in class_names}
+
+            for label in labels:
+                label_name = class_names[label]
+                label_counts[label_name] += 1
+
+            print(f"ClassLabel {split_name.upper():10s} | Total: {total:6d} | ", end="")
+            for name in class_names:
+                count = label_counts[name]
+                print(f"{name}: {count:5d} ({count / total * 100:.1f}%) | ", end="")
+            print()
+        else:
+            positive = sum(1 for l in labels if l == 1)
+            negative = total - positive
+            print(f"{split_name.upper():10s} | Total: {total:6d} | "
+                  f"Positive: {positive:5d} ({positive / total * 100:.1f}%) | "
+                  f"Negative: {negative:5d} ({negative / total * 100:.1f}%)")
+
+
 def split_ds_dict(
         dataset: DatasetDict,
         *,
-        test_size: float = 0.4, shuffle: bool = True, randomness: int = 27, valid_prove: bool = True
+        test_size: float = 0.3, shuffle: bool = True, randomness: int = 27,
+        valid_prove: bool = True,
+        stratified_column: str | None = None
 ) -> DatasetDict:
     """ Split dataset into train and test sets
     :param dataset: dataset object
@@ -80,13 +139,18 @@ def split_ds_dict(
     :param shuffle: shuffle dataset
     :param randomness: random seed
     :param valid_prove: validation proof
+    :param stratified_column: stratified column name
     :return: dataset object
     """
     ds: Dataset = dataset["train"]
-    train = ds.train_test_split(test_size=test_size, shuffle=shuffle, seed=randomness)
+    train = ds.train_test_split(
+        test_size=test_size, shuffle=shuffle, seed=randomness, stratify_by_column=stratified_column
+    )
 
     if valid_prove:
-        valid = train["test"].train_test_split(test_size=test_size / 2, shuffle=shuffle, seed=randomness)
+        valid = train["test"].train_test_split(
+            test_size=test_size / 2, shuffle=shuffle, seed=randomness, stratify_by_column=stratified_column
+        )
         return DatasetDict({"train": train["train"], "valid": valid["train"], "test": valid["test"]})
     else:
         return DatasetDict({"train": train["train"], "test": train["test"]})
@@ -132,12 +196,12 @@ class HFDatasetTokeniser:
 
         return max(lengths), sum(lengths) // len(lengths), min(lengths)
 
-    def fit(self,
-            sample: str,
-            *,
-            padding: str | Literal["max_length", "longest"] = "max_length", max_length: int = 128,
-            truncation: bool = True, tensor_type: str | Literal["pt", "tf"] | None = None
-            ):
+    def encode(self,
+               sample: str,
+               *,
+               padding: str | Literal["max_length", "longest"] = "max_length", max_length: int = 128,
+               truncation: bool = True, tensor_type: str | Literal["pt", "tf"] | None = None
+               ):
         """ Fit tokeniser on sample text
         :param sample: sample text
         :param padding: padding method, either 'max_length' or 'longest'
@@ -152,27 +216,33 @@ class HFDatasetTokeniser:
             truncation=truncation,
             return_tensors="pt" if tensor_type == "pt" else "tf" if tensor_type == "tf" else None
         )
-        tokens = self._T.convert_ids_to_tokens(indices.input_ids)
+        tokens = self._T.convert_ids_to_tokens(indices["input_ids"])
 
         return indices, tokens
 
-    def batch_fit(self,
-                  dataset: Dataset, column: str,
-                  *,
-                  padding: str | Literal["max_length", "longest"] = "max_length", max_length: int = 128,
-                  truncation: bool = True,
-                  tensor_type: str | Literal["pt", "tf"] | None = None,
-                  batch_size: int | Literal[8, 16, 32, 64] | None = None,
-                  ) -> Dataset:
+    def decode(self, indices, *, skip: bool = True) -> str:
+        """ Decode token ids back to text """
+        return self._T.decode(indices.input_ids, skip_special_tokens=skip)
+
+    def fit(self,
+            dataset: Dataset, column: str,
+            *,
+            padding: str | Literal["max_length", "longest"] = "max_length", max_length: int = 128,
+            truncation: bool = True,
+            batch_size: int | Literal[8, 16, 32, 64] | None = None,
+            tensor_type: str | Literal["pt", "tf"] | None = None,
+            remove_col: bool = True,
+            ) -> Dataset:
         """ Fit tokeniser on entire dataset
         :param dataset: dataset object
         :param column: column name to tokenize
         :param padding: padding method, either 'max_length' or 'longest'
         :param max_length: maximum length
         :param truncation: truncation method
-        :param tensor_type: tensor type, either 'pt' for PyTorch or 'tf' for TensorFlow
         :param batch_size: batch size for processing
-        :return: tokenised dataset
+        :param tensor_type: tensor type, either 'pt' for PyTorch or 'tf' for TensorFlow
+        :param remove_col: remove column if true
+        :return: tokenized dataset
         """
         return dataset.map(
             lambda batch: self._T(
@@ -183,10 +253,42 @@ class HFDatasetTokeniser:
             ),
             batched=True,
             batch_size=None if batch_size is None else batch_size,
+            remove_columns=[column] if remove_col else None,
         )
 
     def __repr__(self):
         return f"{"Offline" if self._path else "Online"} HF Tokeniser loaded successfully"
+
+
+def load_hf_data_as_ds_dict(
+        load_path: str | Path, *, load_train: bool = True, load_valid: bool = False, load_test: bool = False
+) -> DatasetDict:
+    """ Load Hugging Face dataset from local disk
+    :param load_path: path to load dataset from
+    :param load_train: load training set
+    :param load_valid: load validation set
+    :param load_test: load test set
+    :return: dataset object
+    """
+    ds: dict[str, Dataset] = {}
+
+    load_state: tuple[bool, bool, bool] = (load_train, load_valid, load_test)
+    match load_state:
+        case [True, True, True]:
+            ds["train"] = load_from_disk(f"{load_path}/train")
+            ds["valid"] = load_from_disk(f"{load_path}/valid")
+            ds["test"] = load_from_disk(f"{load_path}/test")
+        case [True, True, False]:
+            ds["train"] = load_from_disk(f"{load_path}/train")
+            ds["valid"] = load_from_disk(f"{load_path}/valid")
+        case [False, False, True]:
+            ds["test"] = load_from_disk(f"{load_path}/test")
+        case [True, False, False]:
+            ds["train"] = load_from_disk(f"{load_path}/train")
+        case _:
+            raise ValueError("At least one of load_train, load_valid, load_test must be True")
+
+    return DatasetDict(ds)
 
 
 if __name__ == "__main__":
