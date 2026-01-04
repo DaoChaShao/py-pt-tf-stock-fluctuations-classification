@@ -39,7 +39,7 @@ def preprocess_data() -> DatasetDict:
     else:
         print(f"{path.name} doesn't exist!")
 
-        ds_dict = load_dataset(HF_CONFIG.PARAMETERS.DATASET_NAME)
+        ds_dict = load_dataset(HF_CONFIG.PARAMETERS.DATASET)
         print(ds_dict)
 
         return ds_dict
