@@ -1,0 +1,57 @@
+#!/usr/bin/env python3.12
+# -*- Coding: UTF-8 -*-
+# @Time     :   2026/1/4 22:22
+# @Author   :   Shawn
+# @Version  :   Version 0.1.0
+# @File     :   preparer.py
+# @Desc     :   
+
+from torch.utils.data import DataLoader
+
+from src.configs.cfg_hf import HF_CONFIG
+from src.dataloaders.seq2seq_hf_loader import HFDataLoaderForClassification
+from src.utils.TF import load_hf_data_as_ds_dict
+from src.utils.helper import Timer
+from src.utils.highlighter import lines
+
+
+def prepare_dataloader() -> tuple[DataLoader, DataLoader]:
+    """ Main Function """
+    with Timer("Preparing Hugging Face Dataset"):
+        # Load processed dataset dictionary
+        ds_dict = load_hf_data_as_ds_dict(
+            HF_CONFIG.FILE_PATHS.DATASETS,
+            load_train=True, load_valid=True, load_test=False
+        )
+        print(ds_dict)
+        lines()
+        print(ds_dict["train"].features)
+        print(ds_dict["valid"].features)
+
+        loader_train = HFDataLoaderForClassification(
+            dataset=ds_dict["train"],
+            features_col="input_ids",
+            labels_col="PriceVariation",
+            batch_size=HF_CONFIG.PROCESSOR.BATCHES,
+            shuffle_state=True,
+            workers=HF_CONFIG.PROCESSOR.WORKERS,
+            drop_last=False
+        )
+        print(next(loader_train))
+        lines()
+        print(loader_train)
+        loader_valid = HFDataLoaderForClassification(
+            dataset=ds_dict["valid"],
+            features_col="input_ids",
+            labels_col="PriceVariation",
+            batch_size=HF_CONFIG.PROCESSOR.BATCHES,
+            shuffle_state=False,
+            workers=HF_CONFIG.PROCESSOR.WORKERS,
+            drop_last=False
+        )
+
+        return loader_train, loader_valid
+
+
+if __name__ == "__main__":
+    prepare_dataloader()
