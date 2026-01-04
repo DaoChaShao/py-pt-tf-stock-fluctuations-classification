@@ -1,10 +1,21 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-03)
+## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-04)
 
 ### Features
 
+- update huggingface-hub and transformers dependencies, add safetensors and tokenizers packages ([9628a28](https://github.com///commit/9628a284002e82d3f022cc55605a9b519c11ad93))
+- add vocab.txt ([2e64dbc](https://github.com///commit/2e64dbcf14ae0cb631b634aa5d87edde89944eb5))
+- add tokenizer_config.json ([10786c9](https://github.com///commit/10786c9a1ee8d19dd3503c6cc54924a1fed7a8b2))
+- add tokenizer.json ([e87e265](https://github.com///commit/e87e2658493c65c3b9b8954800a0c74fa9f87a25))
+- implement Hugging Face dataset tokeniser with offline and online initialization ([c1dbeae](https://github.com///commit/c1dbeae38ec204e00bfc6dd65064dbcc22da9835))
+- add transformers dependency for model integration ([e23f654](https://github.com///commit/e23f6546889b93bd5171f3bb75f86d45b08c6a03))
+- enhance data processing with tokenization and max length calculation ([7d5de3e](https://github.com///commit/7d5de3e03e6a97a66e74bbcc2599c7a7eb62fcc9))
+- add configuration file for BERT model parameters ([7eba5e0](https://github.com///commit/7eba5e0e0398b3565e8c98d29b1f381912362cb5))
+- update HFParams to include TOKENISER and rename DATASET_NAME to DATASET ([9ff3f88](https://github.com///commit/9ff3f88be477ae57ca6f4e22183abc07da43d74a))
+- add TOKENIZER path to configuration ([c3ddc99](https://github.com///commit/c3ddc99be365bdaae045c96a8b6e7a2b6de7de75))
+- add .gitignore to exclude Python-generated files and IDE configurations ([e8c9ec7](https://github.com///commit/e8c9ec73332c004ad541bcd3a1d8d20468c6b196))
 - add uv.lock ([4a788c0](https://github.com///commit/4a788c04ff808018f22016332037dff30df8c532))
 - add dataset loading and processing functionalities in TF.py ([53c7ca2](https://github.com///commit/53c7ca236eefa6f80c372f763ab4563cbd1ee5d6))
 - add datasets dependency for data handling ([2061eec](https://github.com///commit/2061eecca7cc3c7c28ff9d5552e9d98336c80681))
@@ -86,7 +97,6 @@
 - add __init__.py for Dataloader module with specialized PyTorch DataLoader wrappers ([ae3e4aa](https://github.com///commit/ae3e4aada6d5bc73261e1769bb2646f7e0765eef))
 - add __init__.py for Criterion module with specialized PyTorch loss functions ([64a566c](https://github.com///commit/64a566c315295eef2e8e0a172618ff2487802f75))
 - add __init__.py for ML/Data Processing configuration modules ([e18f999](https://github.com///commit/e18f99987186d148946be62a7fd95ed0aa11586d))
-- add .gitignore to exclude Python-generated files and IDE configurations ([c6dab0d](https://github.com///commit/c6dab0dd78e5f8256232e39b1393b14c6268b3f9))
 - add configuration files for English and Chinese pipelines with accuracy metrics ([cc07460](https://github.com///commit/cc0746048fbe91fbbaddecf1b0792a64acc78fa8))
 - add CHANGELOG.md for version 0.1.0 with features and bug fixes ([d23ed69](https://github.com///commit/d23ed69f9289bd331dc1dce91db4ce9bfb34a1a1))
 - add Chinese README with project overview and quick start instructions ([47d54d8](https://github.com///commit/47d54d8a81dd32486bf0f6133ac95ef7257a0043))
@@ -95,6 +105,8 @@
 
 ### Bug Fixes
 
+- update dataset loading to use renamed DATASET parameter ([37e395d](https://github.com///commit/37e395de72b6956b040b90fd4898283ce2c926be))
+- update CHANGELOG.md with recent feature additions and bug fixes ([996c84b](https://github.com///commit/996c84b72085ec4a937d71c61b115a01dc5ab97f))
 - rename unet5layers4sem.py to unet5layers_sem.py ([8610b14](https://github.com///commit/8610b14267e28b6894e170e547a5f33e60931639))
 - rename unet4layers4sem.py to unet4layers_sem.py ([45bfcc1](https://github.com///commit/45bfcc17a2da119e67e08cf7a7e1f9d0e7b3f85e))
 - update import references for UNet modules in __init__.py ([5dec65f](https://github.com///commit/5dec65fa14c57d6d7ac71650dd9412a06a6be0e6))
