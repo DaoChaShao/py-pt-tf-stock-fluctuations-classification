@@ -1,10 +1,21 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-04)
+## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-05)
 
 ### Features
 
+- add state.json for dataset configuration and metadata ([5ea08e9](https://github.com///commit/5ea08e95ec9e088471c991a312ae684c758098d2))
+- add dataset_info.json for dataset metadata and configuration ([786681f](https://github.com///commit/786681fb7422f71c8a2e51c11bbd249b9b2cc71b))
+- add dataset_dict.json for dataset split configuration ([5fa26a3](https://github.com///commit/5fa26a3e3b69caceb1b10b9c4dcc09d3c7a9d03b))
+- add data-00000-of-00001.arrow ([327ddce](https://github.com///commit/327ddcefebbe22ad602a33915bfc697089dbe806))
+- add StratifiedColConverter and load_hf_data_as_ds_dict for enhanced dataset handling ([2e4f309](https://github.com///commit/2e4f3098210e0be58aaf54ba4e24066034590c48))
+- add HFDataLoaderForClassification for Hugging Face dataset handling ([0632a3c](https://github.com///commit/0632a3cd54e2e97a551e434afcc20dfc9d27e683))
+- enhance data processing with tokenization and save functionality ([66ac653](https://github.com///commit/66ac65341f9d793eadfe2d2722984fac0f0c0e27))
+- enhance data preprocessing with stratified column conversion and improved logging ([052e4f2](https://github.com///commit/052e4f200d21a47b5d3b414c4adb60fea95dd832))
+- add preparer.py for Hugging Face dataset preparation and data loaders ([7e44ba3](https://github.com///commit/7e44ba3ab0447c5020c07e3ea417a9cce20b34dd))
+- enhance HFParams and HuggingFaceConfiguration with additional network and processor settings ([89ba552](https://github.com///commit/89ba5520135affe0a6c2cdd0e7e33b7a33975670))
+- add HFDataLoaderForClassification to __all__ exports ([ea131e3](https://github.com///commit/ea131e3e3b1e04568da43b360cd6cc779b671f7b))
 - update huggingface-hub and transformers dependencies, add safetensors and tokenizers packages ([9628a28](https://github.com///commit/9628a284002e82d3f022cc55605a9b519c11ad93))
 - add vocab.txt ([2e64dbc](https://github.com///commit/2e64dbcf14ae0cb631b634aa5d87edde89944eb5))
 - add tokenizer_config.json ([10786c9](https://github.com///commit/10786c9a1ee8d19dd3503c6cc54924a1fed7a8b2))
@@ -105,6 +116,7 @@
 
 ### Bug Fixes
 
+- update import for TorchDataLoader from seq2seq_loader ([96722e6](https://github.com///commit/96722e6ff1ec9306889817ab5c0f7386bf9b864a))
 - update dataset loading to use renamed DATASET parameter ([37e395d](https://github.com///commit/37e395de72b6956b040b90fd4898283ce2c926be))
 - update CHANGELOG.md with recent feature additions and bug fixes ([996c84b](https://github.com///commit/996c84b72085ec4a937d71c61b115a01dc5ab97f))
 - rename unet5layers4sem.py to unet5layers_sem.py ([8610b14](https://github.com///commit/8610b14267e28b6894e170e547a5f33e60931639))
@@ -164,9 +176,19 @@
 - update import paths for seq2seq transformer and enums modules ([62c07ba](https://github.com///commit/62c07ba6a730ac877593f626e10c350ae0ffc517))
 - add missing newline at end of main.py ([682f032](https://github.com///commit/682f032c0043c6dc05162ae455d6e5665de4389e))
 
+### Chore
+
+- update CHANGELOG.md with recent feature additions and bug fixes ([7811f83](https://github.com///commit/7811f8369277df9c21cd85be8b443c1d7f58686e))
+
 ### Docs
 
 - add local data path instructions for Hugging Face datasets in Chinese README ([84439e6](https://github.com///commit/84439e63c88cbcd27bb68e11f317ed88832fff02))
 - update README with local data path instructions for Hugging Face datasets ([1c1fece](https://github.com///commit/1c1fece4e5088ee1b2e51f07b84499504ccc66dd))
 - update CHANGELOG.md with recent feature additions and bug fixes ([0539fec](https://github.com///commit/0539fec515ba5c18b18e59a0aec331a9ec9359dc))
+
+### Code Refactoring
+
+- rename auto_loader.py to seq2seq_loader.py and update padding parameter names ([76f80ea](https://github.com///commit/76f80ea106c02c777455338b18ede4abc0c91848))
+- remove unused TEMPERATURE parameter from RNN configuration ([5e8654a](https://github.com///commit/5e8654a05656b9527f2236e836f7ce7940d00656))
+- rename data paths for clarity and consistency ([327a4b8](https://github.com///commit/327a4b84d6be3cd5a476eefe1f73f00773f808be))
 
