@@ -1,0 +1,62 @@
+{
+  "builder_name": "arrow",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "arrow",
+  "dataset_size": 1864098,
+  "description": "",
+  "download_checksums": {
+    "/Users/daochashao/PycharmProjects/py-pt-tf-stock-fluctuations-classification/data/financial_classification-train.arrow": {
+      "num_bytes": 1870200,
+      "checksum": null
+    }
+  },
+  "download_size": 1870200,
+  "features": {
+    "PriceVariation": {
+      "names": [
+        "Negative",
+        "Positive"
+      ],
+      "_type": "ClassLabel"
+    },
+    "input_ids": {
+      "feature": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "token_type_ids": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "attention_mask": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 3734298,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 1864098,
+      "num_examples": 14388,
+      "dataset_name": "arrow"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
