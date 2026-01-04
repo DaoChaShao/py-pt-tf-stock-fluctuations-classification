@@ -37,6 +37,7 @@ class FilePaths:
     SPACY_MODEL_EN: Path = BASE_DIR / "models/spacy/en_core_web_md"
     SPACY_MODEL_CN: Path = BASE_DIR / "models/spacy/zh_core_web_md"
     SQLITE: Path = BASE_DIR / "data/sqlite3.db"
+    TOKENIZER: Path = BASE_DIR / "tokenizer"
 
 
 @dataclass
