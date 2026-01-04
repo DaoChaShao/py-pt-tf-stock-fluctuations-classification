@@ -29,7 +29,7 @@ Usage:
 __author__ = "Shawn Yu"
 __version__ = "0.2.0"
 
-from .auto_loader import TorchDataLoader
+from .seq2seq_loader import TorchDataLoader
 
 __all__ = [
     "TorchDataLoader",
