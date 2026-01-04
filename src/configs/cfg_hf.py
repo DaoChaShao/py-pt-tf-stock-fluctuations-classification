@@ -9,21 +9,25 @@
 from dataclasses import dataclass, field
 
 from src.configs.cfg_base import Database, FilePaths, Punctuations
+from src.configs.cfg_dl import DataPreprocessor, Hyperparameters
 
 
 @dataclass
 class HFParams:
     """ HF Config """
     DATASET: str = "SelmaNajih001/FinancialClassification"
-    TOKENISER: str = "google-bert/bert-base-chinese"
+    NET_CN: str = "google-bert/bert-base-chinese"
+    NET_EN_FINANCIAL: str = "yiyanghkust/finbert-tone"
 
 
 @dataclass
 class HuggingFaceConfiguration:
     """ HF Config """
-    PARAMETERS: HFParams = field(default_factory=HFParams)
     DATABASE: Database = field(default_factory=Database)
     FILE_PATHS: FilePaths = field(default_factory=FilePaths)
+    HYPERPARAMETERS: Hyperparameters = field(default_factory=Hyperparameters)
+    PARAMETERS: HFParams = field(default_factory=HFParams)
+    PROCESSOR: DataPreprocessor = field(default_factory=DataPreprocessor)
     PUNCTUATIONS: Punctuations = field(default_factory=Punctuations)
 
 
