@@ -14,7 +14,8 @@ from src.configs.cfg_base import Database, FilePaths, Punctuations
 @dataclass
 class HFParams:
     """ HF Config """
-    DATASET_NAME: str = "SelmaNajih001/FinancialClassification"
+    DATASET: str = "SelmaNajih001/FinancialClassification"
+    TOKENISER: str = "google-bert/bert-base-chinese"
 
 
 @dataclass
