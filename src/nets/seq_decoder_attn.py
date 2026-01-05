@@ -3,7 +3,7 @@
 # @Time     :   2025/12/20 14:43
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   seq_decoder4attn.py
+# @File     :   seq_decoder_attn.py
 # @Desc     :   
 
 from random import choice
