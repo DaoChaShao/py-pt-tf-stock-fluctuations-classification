@@ -13,10 +13,10 @@ from torch import (nn, Tensor,
 from typing import override, Literal
 
 from src.configs.cfg_enums import Tasks
-from src.nets.base_ann import BaseANN
+from src.nets.base_ann import BaseRNN
 
 
-class MultiTaskRNN(BaseANN):
+class MultiTaskRNN(BaseRNN):
     """ An RNN model for multi-class classification tasks using PyTorch """
 
     def __init__(self,
