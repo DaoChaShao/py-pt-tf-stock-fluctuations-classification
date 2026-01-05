@@ -18,7 +18,7 @@ from src.utils.PT import get_device
 WIDTH: int = 64
 
 
-class TorchTrainer4UNetSemSeg(QObject):
+class UNetSemSegTorchTrainer(QObject):
     """ Trainer class for managing training process """
     losses: Signal = Signal(int, float, float)
 
