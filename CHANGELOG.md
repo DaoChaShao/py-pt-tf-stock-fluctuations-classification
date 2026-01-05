@@ -5,6 +5,17 @@
 
 ### Features
 
+- add trainer.py for Seq2Seq model training and evaluation ([c269306](https://github.com///commit/c269306d2cf922629e6a2ad2782670821255c0ce))
+- add Seq2SeqHFTransformerTrainer class for training Hugging Face Seq2Seq models ([966f05a](https://github.com///commit/966f05a08049e10e8ca42f590153729a9bb616ca))
+- add Seq2SeqHFTransformer class for Hugging Face transformer model ([a0a7d53](https://github.com///commit/a0a7d53874e554d4968d1831708755efee72263f))
+- add README.md for Bert-base-chinese model documentation ([b235475](https://github.com///commit/b235475ffde03f8a31b0d7fc88db57bda2931cc5))
+- update configuration paths for datasets and models in cfg_base.py ([4cec63a](https://github.com///commit/4cec63ae58b2485d8ace59aa9a24d521be35f381))
+- add BaseTorchTrainer class for managing PyTorch training processes ([0d7ebde](https://github.com///commit/0d7ebdec08820616804412c9bcad89c57b668af8))
+- add BaseHFPretrainedTransformer class for Hugging Face pretrained models ([4b45b55](https://github.com///commit/4b45b55f95edcb6dcd9864b368a8f884409138ef))
+- rename trainer4torch.py to auto_trainer.py and enhance AutoTorchTrainer with gradient clipping and improved parameter handling ([9fddc58](https://github.com///commit/9fddc58fd4872d71cd05ada69d13cebf671f7ccc))
+- add Hugging Face datasets utilities and update version to 0.4.0 ([d3c67bb](https://github.com///commit/d3c67bb5b59c66a4694301d6b1e63e1cd5ba8f37))
+- update __init__.py to include new sequence-to-sequence trainers and utility functions ([0a2da04](https://github.com///commit/0a2da0450fa20cfa7105da3f7bbf7e3c98092622))
+- add __init__.py for data processing module with utility functions ([38e53d6](https://github.com///commit/38e53d604e3a5628bdf71a4685770e27c4694978))
 - add state.json for dataset configuration and metadata ([5ea08e9](https://github.com///commit/5ea08e95ec9e088471c991a312ae684c758098d2))
 - add dataset_info.json for dataset metadata and configuration ([786681f](https://github.com///commit/786681fb7422f71c8a2e51c11bbd249b9b2cc71b))
 - add dataset_dict.json for dataset split configuration ([5fa26a3](https://github.com///commit/5fa26a3e3b69caceb1b10b9c4dcc09d3c7a9d03b))
@@ -116,6 +127,15 @@
 
 ### Bug Fixes
 
+- update tokenization process in processor.py for improved debugging ([69f11dd](https://github.com///commit/69f11dd811fa9522f40c3064a3fdbe90ead89ec8))
+- add debug print statements for dataset and DataLoader checkpoints in preparer.py ([8d5f794](https://github.com///commit/8d5f79464f8d164cb227b33bb61f74ac663d2af0))
+- update MultiTaskRNN to inherit from BaseRNN for correct architecture ([ec21f37](https://github.com///commit/ec21f371fa97275ac69870a08a9ef7ed45e0c2c7))
+- update MultiTaskLSTM to inherit from BaseRNN for correct architecture ([caa8cc8](https://github.com///commit/caa8cc8bb2b3d3317cb0a885b26e6bcad1fa0f86))
+- update MultiTaskGRU to inherit from BaseRNN for correct architecture ([ea9649e](https://github.com///commit/ea9649e52ffec27c78dfdfa8b1ec21d473f26059))
+- rename tokenizer config file for improved clarity ([b3c18dd](https://github.com///commit/b3c18ddf160e044ea57f075ab36def93ef6dd795))
+- rename MAX_SEQUENCE_LEN to MAX_SEQ_LEN for consistency in cfg_dl.py ([fde9b59](https://github.com///commit/fde9b59d2e4d2f60817ff3c24eb4f78bcc0bf3b3))
+- rename BaseANN to BaseRNN and update method names for consistency ([218fc9a](https://github.com///commit/218fc9a7dae39c8d60a056e6c7e01d9f64557a29))
+- rename BaseANN to BaseRNN and update related imports in __init__.py ([a77c260](https://github.com///commit/a77c2606ab2a3df1a7979534fe2a803feec4c815))
 - update import for TorchDataLoader from seq2seq_loader ([96722e6](https://github.com///commit/96722e6ff1ec9306889817ab5c0f7386bf9b864a))
 - update dataset loading to use renamed DATASET parameter ([37e395d](https://github.com///commit/37e395de72b6956b040b90fd4898283ce2c926be))
 - update CHANGELOG.md with recent feature additions and bug fixes ([996c84b](https://github.com///commit/996c84b72085ec4a937d71c61b115a01dc5ab97f))
@@ -178,7 +198,8 @@
 
 ### Chore
 
-- update CHANGELOG.md with recent feature additions and bug fixes ([7811f83](https://github.com///commit/7811f8369277df9c21cd85be8b443c1d7f58686e))
+- delete ([e27519f](https://github.com///commit/e27519f6134e237b2a9761a03ded6cec17318a67))
+- update CHANGELOG.md with recent feature additions and bug fixes ([d549546](https://github.com///commit/d549546c1d5f484b70af6dd7c899a6af8b650299))
 
 ### Docs
 
@@ -188,6 +209,23 @@
 
 ### Code Refactoring
 
+- rename vocab.txt for improved organization ([6e087a5](https://github.com///commit/6e087a5da8d71ddb9e72b04d09c80119f9c2ec95))
+- rename tokenizer_config.json for improved organization ([e6f8a26](https://github.com///commit/e6f8a26efce917ab93bb4a04ddec2dd5860b2795))
+- rename tokenizer.json for improved organization ([d761c0e](https://github.com///commit/d761c0e8bf1b68f1e18d9c92907fc504ff4dc1a0))
+- update fingerprint in state.json for consistency ([2a3e7cf](https://github.com///commit/2a3e7cf5ac2f760d4d9b72c645c6792de68828e0))
+- rename seq_encoder4tf.py to seq_encoder_tf.py for clarity ([c008c55](https://github.com///commit/c008c554b8f7d0d3fc29794f1b26b86fd875c919))
+- update base class from BaseANN to BaseRNN in SeqEncoder for accuracy ([c876bfd](https://github.com///commit/c876bfd2c91e4682eb7198e6a0a25a18193993f3))
+- rename seq_decoder4tf.py to seq_decoder_tf.py for clarity ([3b8660e](https://github.com///commit/3b8660eb91d0be113df63c72f83d3aac665407db))
+- rename seq_decoder4attn.py to seq_decoder_attn.py for clarity ([1e0fe05](https://github.com///commit/1e0fe0539d908da10e32376852585f1235090d72))
+- rename trainer4seq2seq.py to seq2seq_trainer.py for clarity ([7044501](https://github.com///commit/704450104f3eeea0775497b9244ba782e094a03e))
+- rename trainer file and class for clarity in seq2seq_tf_trainer.py ([6b9bcb3](https://github.com///commit/6b9bcb3e4244189ed9c745c5c005477dc7cc05aa))
+- update import paths for TransformerSeqEncoder and TransformerSeqDecoder in seq2seq_tf.py ([dbafec4](https://github.com///commit/dbafec40fef53121f154f3b744e66fce0cb9f6c9))
+- simplify HFDataLoaderForClassification by removing features and labels parameters ([48f06a1](https://github.com///commit/48f06a133a1f1f5a7594ed801b6ed12f533cc871))
+- rename trainer file and class for consistency in seq2seq_attn_trainer.py ([76eb63e](https://github.com///commit/76eb63e36306b692216119a77101240965602573))
+- rename SeqDecoderWithAttn import for consistency in seq2seq_attn_rnn.py ([f27cf6f](https://github.com///commit/f27cf6f0b7567faca139e79f30c8c0f40acd7909))
+- rename SeqDecoderWithAttn import for consistency in seq2seq_attn_lstm.py ([e24d8d2](https://github.com///commit/e24d8d2416075a73861f3333141a4728200f4193))
+- rename SeqDecoderWithAttn import for consistency in seq2seq_attn_gru.py ([7962dc8](https://github.com///commit/7962dc853b72176f7f353f74af9323cd272d8a70))
+- rename trainer class for clarity in sem_seg_trainer.py ([d6515d4](https://github.com///commit/d6515d44297b2cc494e5eb53c4472dd007f3cfac))
 - rename auto_loader.py to seq2seq_loader.py and update padding parameter names ([76f80ea](https://github.com///commit/76f80ea106c02c777455338b18ede4abc0c91848))
 - remove unused TEMPERATURE parameter from RNN configuration ([5e8654a](https://github.com///commit/5e8654a05656b9527f2236e836f7ce7940d00656))
 - rename data paths for clarity and consistency ([327a4b8](https://github.com///commit/327a4b84d6be3cd5a476eefe1f73f00773f808be))
