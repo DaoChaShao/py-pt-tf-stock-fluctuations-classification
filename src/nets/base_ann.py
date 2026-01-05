@@ -15,7 +15,7 @@ from typing import final, Literal, Final
 WIDTH: int = 64
 
 
-class BaseANN(nn.Module, ABC):
+class BaseRNN(nn.Module, ABC):
     """ Abstract Base Class for RNN-based Networks """
 
     def __init__(self,
@@ -77,6 +77,7 @@ class BaseANN(nn.Module, ABC):
 
             elif "weight_ih" in name:
                 nn.init.xavier_uniform_(param)
+
             elif "weight_hh" in name:
                 nn.init.orthogonal_(param)
 
@@ -109,7 +110,7 @@ class BaseANN(nn.Module, ABC):
         return h0, c0
 
     @final
-    def save_model(self, path: str | Path) -> None:
+    def save_params(self, path: str | Path) -> None:
         """ Save the model - all networks share the same method
         :param path: path to save the model
         """
@@ -117,7 +118,7 @@ class BaseANN(nn.Module, ABC):
         print("The model has been saved successfully.")
 
     @final
-    def load_model(self, path: str | Path, strict: bool = False) -> None:
+    def load_params(self, path: str | Path, strict: bool = False) -> None:
         """ Load the model - all networks share the same method
         :param path: path to load the model from
         :param strict: whether to strictly enforce that the keys in state_dict match the keys returned by this module's state_dict function
