@@ -3,36 +3,51 @@
 # @Time     :   2025/12/4 15:46
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   trainer4torch.py
+# @File     :   auto_trainer.py
 # @Desc     :   
 
-from PySide6.QtCore import QObject, Signal
 from datetime import datetime
 from json import dumps
 from torch import nn, optim, no_grad, save, device
+from torch.utils.data import DataLoader
+from typing import Literal, override
 
-from src.dataloaders import TorchDataLoader
+from src.trainers.base_trainer import BaseTorchTrainer
 from src.trainers.calc_classification import calculator_for_classification
 from src.trainers.calc_cm import calculator_for_confusion_metrics
 from src.utils.logger import record_log
-from src.utils.PT import get_device
 
 WIDTH: int = 64
 
 
-class TorchTrainer(QObject):
+class AutoTorchTrainer(BaseTorchTrainer):
     """ Trainer class for managing training process """
-    losses: Signal = Signal(int, float, float)
 
-    def __init__(self, model: nn.Module, optimiser, criterion, accelerator: str = "auto", scheduler=None, ) -> None:
-        super().__init__()
-        self._accelerator = get_device(accelerator)
-        self._model = model.to(device(self._accelerator))
-        self._optimiser = optimiser
-        self._criterion = criterion
-        self._scheduler = scheduler
+    def __init__(self,
+                 model: nn.Module, optimiser, criterion,
+                 accelerator: str | Literal["auto", "cuda", "cpu"] = "auto",
+                 scheduler=None,
+                 clip_grad: bool = False,
+                 ) -> None:
+        """ Initialize the Trainer
+        :param model: PyTorch model to be trained
+        :param optimiser: Optimiser for training
+        :param criterion: Loss function
+        :param accelerator: Device to place the model on
+        :param scheduler: Learning rate scheduler
+        :param clip_grad: Whether to apply gradient clipping
+        """
+        super().__init__(
+            model=model,
+            optimiser=optimiser,
+            criterion=criterion,
+            accelerator=accelerator,
+            scheduler=scheduler,
+        )
+        self._clip: bool = clip_grad
 
-    def _epoch_train(self, dataloader: TorchDataLoader) -> float:
+    @override
+    def _epoch_train(self, dataloader: DataLoader) -> float:
         """ Train the model for one epoch
         :param dataloader: DataLoader for training data
         :return: average training loss for the epoch
@@ -53,7 +68,7 @@ class TorchTrainer(QObject):
             # print(outputs.shape, labels.shape)
 
             loss = self._criterion(outputs, labels)
-            nn.utils.clip_grad_norm_(self._model.parameters(), max_norm=1.0)
+            nn.utils.clip_grad_norm_(self._model.parameters(), max_norm=1.0) if self._clip else None
             loss.backward()
 
             self._optimiser.step()
@@ -63,7 +78,8 @@ class TorchTrainer(QObject):
 
         return _loss / _total
 
-    def _epoch_valid(self, dataloader: TorchDataLoader) -> tuple[float, dict[str, float]]:
+    @override
+    def _epoch_valid(self, dataloader: DataLoader) -> tuple[float, dict[str, float]]:
         """ Validate the model for one epoch
         :param dataloader: DataLoader for validation data
         :return: average validation loss for the epoch
@@ -100,15 +116,20 @@ class TorchTrainer(QObject):
 
         return _loss / _total, _metrics
 
+    @override
     def fit(self,
-            train_loader: TorchDataLoader, valid_loader: TorchDataLoader,
-            epochs: int, model_save_path: str | None = None, log_name: str | None = None
+            train_loader: DataLoader, valid_loader: DataLoader, epochs: int,
+            model_save_path: str | None = None,
+            log_name: str | None = None,
+            patience: int = 5
             ) -> None:
         """ Fit the model to the training data
         :param train_loader: DataLoader for training data
         :param valid_loader: DataLoader for validation data
         :param epochs: number of training epochs
         :param model_save_path: path to save the best model parameters
+        :param log_name: name for the log file
+        :param patience: number of epochs to wait for improvement before early stopping
         :return: None
         """
         # Initialize logger
@@ -117,7 +138,6 @@ class TorchTrainer(QObject):
 
         _best_valid_loss = float("inf")
         _min_delta = 5e-4
-        _patience = 5
         _patience_counter = 0
         for epoch in range(epochs):
             train_loss = self._epoch_train(train_loader)
@@ -147,8 +167,8 @@ class TorchTrainer(QObject):
                     print(f"√ Model's parameters saved to {model_save_path}\n")
             else:
                 _patience_counter += 1
-                print(f"× No improvement [{_patience_counter}/{_patience}]\n")
-                if _patience_counter >= _patience:
+                print(f"× No improvement [{_patience_counter}/{patience}]\n")
+                if _patience_counter >= patience:
                     print("*" * WIDTH)
                     print("Early Stopping Triggered")
                     print("-" * WIDTH)
@@ -163,7 +183,7 @@ class TorchTrainer(QObject):
                 else:
                     self._scheduler.step()
 
-        if _patience_counter < _patience:
+        if _patience_counter < patience:
             print(f"Training completed after {epochs} epochs.")
 
 
