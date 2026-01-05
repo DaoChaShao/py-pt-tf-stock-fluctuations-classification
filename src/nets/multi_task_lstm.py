@@ -12,10 +12,10 @@ from torch import (Tensor, nn,
 from typing import override, Literal
 
 from src.configs.cfg_enums import Tasks
-from src.nets.base_ann import BaseANN
+from src.nets.base_ann import BaseRNN
 
 
-class MultiTaskLSTM(BaseANN):
+class MultiTaskLSTM(BaseRNN):
     def __init__(self,
                  vocab_size: int, embedding_dim: int, hidden_size: int, num_layers: int,
                  dropout_rate: float = 0.3, bidirectional: bool = True,
