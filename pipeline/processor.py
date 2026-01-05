@@ -30,7 +30,7 @@ def process_data() -> None:
         # print(prove.to_pandas())
 
         # Tokenization
-        tokeniser = HFDatasetTokeniser(HF_CONFIG.PARAMETERS.NET_CN, Path(HF_CONFIG.FILE_PATHS.TOKENIZER))
+        tokeniser = HFDatasetTokeniser(HF_CONFIG.PARAMETERS.NET_CN, Path(HF_CONFIG.FILE_PATHS.PRETRAINED_MODEL))
         print(tokeniser)
         lines()
 
@@ -44,15 +44,15 @@ def process_data() -> None:
         lines()
 
         # Use a random sample to test tokenization
-        # idx: int = randint(0, len(train) - 1)
-        # sample: str = train[idx][col]
-        # print(f"{idx} Sample Text: {sample}")
-        # indices, tokens = tokeniser.encode(sample, padding="max_length", max_length=max_len, truncation=True)
-        # print(f"Tokenised Output: {indices["input_ids"]}")
-        # print(f"Tokens: {tokens}")
-        # dec_out = tokeniser.decode(indices)
-        # print(f"Decode output: {dec_out}")
-        # lines()
+        idx: int = randint(0, len(train) - 1)
+        sample: str = train[idx][col]
+        print(f"{idx} Sample Text: {sample}")
+        indices, tokens = tokeniser.encode(sample, padding="max_length", max_length=max_len, truncation=True)
+        print(f"Tokenised Output: {indices["input_ids"]}")
+        print(f"Tokens: {tokens}")
+        dec_out = tokeniser.decode(indices)
+        print(f"Decode output: {dec_out}")
+        lines()
 
         # Use epoch fit to process the whole dataset
         tokenised_datasets: dict[str, Dataset] = {}
