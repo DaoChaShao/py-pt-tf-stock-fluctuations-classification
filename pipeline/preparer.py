@@ -25,25 +25,24 @@ def prepare_dataloader() -> tuple[DataLoader, DataLoader]:
         )
         print(ds_dict)
         lines()
+        print("Dataset Checkpoint:")
         print(ds_dict["train"].features)
         print(ds_dict["valid"].features)
 
         loader_train = HFDataLoaderForClassification(
             dataset=ds_dict["train"],
-            features_col="input_ids",
-            labels_col="PriceVariation",
             batch_size=HF_CONFIG.PROCESSOR.BATCHES,
             shuffle_state=True,
             workers=HF_CONFIG.PROCESSOR.WORKERS,
             drop_last=False
         )
-        print(next(loader_train))
         lines()
+        print("DataLoader Checkpoint:")
         print(loader_train)
+        # lines()
+        # print(next(loader_train))
         loader_valid = HFDataLoaderForClassification(
             dataset=ds_dict["valid"],
-            features_col="input_ids",
-            labels_col="PriceVariation",
             batch_size=HF_CONFIG.PROCESSOR.BATCHES,
             shuffle_state=False,
             workers=HF_CONFIG.PROCESSOR.WORKERS,
