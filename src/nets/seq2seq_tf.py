@@ -14,8 +14,8 @@ from torch import (nn, Tensor, save, load,
                    randint)
 from typing import final, Literal
 
-from src.nets.seq_encoder4tf import TransformerSeqEncoder
-from src.nets.seq_decoder4tf import TransformerSeqDecoder
+from src.nets.seq_encoder_tf import TransformerSeqEncoder
+from src.nets.seq_decoder_tf import TransformerSeqDecoder
 
 WIDTH: int = 64
 
