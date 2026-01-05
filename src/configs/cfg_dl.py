@@ -18,7 +18,7 @@ class DataPreprocessor:
     DROPOUT_RATIO: float = 0.5
     IMAGE_HEIGHT: int = 320
     IMAGE_WIDTH: int = 384
-    MAX_SEQUENCE_LEN: int = 5
+    MAX_SEQ_LEN: int = 5
     PCA_VARIANCE_THRESHOLD: float = 0.95
     RANDOMNESS: int = 27
     SHUFFLE: bool = True
