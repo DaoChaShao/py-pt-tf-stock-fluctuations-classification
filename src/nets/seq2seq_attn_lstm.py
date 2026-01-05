@@ -15,7 +15,7 @@ from typing import override, Literal
 from src.configs.cfg_enums import SeqMergeMethods, SeqStrategies, SeqNets, AttnScorer
 from src.nets.base_seq2seq import BaseSeqNet
 from src.nets.seq_decoder import SeqDecoder
-from src.nets.seq_decoder4attn import SeqDecoderWithAttn
+from src.nets.seq_decoder_attn import SeqDecoderWithAttn
 from src.nets.seq_encoder import SeqEncoder
 from src.utils.PT import TorchRandomSeed
 
