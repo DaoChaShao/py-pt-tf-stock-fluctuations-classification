@@ -3,7 +3,7 @@
 # @Time     :   2025/12/28 19:30
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   seq_decoder4tf.py
+# @File     :   seq_decoder_tf.py
 # @Desc     :   
 
 from torch import (nn, Tensor, device,
@@ -12,7 +12,7 @@ from torch import (nn, Tensor, device,
 from typing import Literal, final
 
 from src.nets.position_encoders import TransformerPositionEncoder
-from src.nets.seq_encoder4tf import TransformerSeqEncoder
+from src.nets.seq_encoder_tf import TransformerSeqEncoder
 from src.utils.highlighter import lines
 from src.utils.PT import TorchRandomSeed
 
