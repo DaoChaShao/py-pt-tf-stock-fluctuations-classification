@@ -3,7 +3,7 @@
 # @Time     :   2025/12/12 11:36
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   trainer4seq2seq.py
+# @File     :   seq2seq_trainer.py
 # @Desc     :   
 
 from PySide6.QtCore import QObject, Signal
@@ -19,7 +19,7 @@ from src.utils.PT import get_device
 WIDTH: int = 64
 
 
-class TorchTrainer4SeqToSeq(QObject):
+class SeqToSeqTorchTrainer(QObject):
     """ Trainer class for managing seq2seq training process """
     losses: Signal = Signal(int, float, float)
 
@@ -153,8 +153,9 @@ class TorchTrainer4SeqToSeq(QObject):
         return _loss / _total, _metrics
 
     def fit(self,
-            train_loader: TorchDataLoader, valid_loader: TorchDataLoader,
-            epochs: int, model_save_path: str | None = None, log_name: str | None = None
+            train_loader: TorchDataLoader, valid_loader: TorchDataLoader, epochs: int,
+            model_save_path: str | None = None,
+            log_name: str | None = None
             ) -> None:
         """ Fit the model to the training data
         :param train_loader: DataLoader for training data
