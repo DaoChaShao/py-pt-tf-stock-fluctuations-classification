@@ -3,7 +3,7 @@
 # @Time     :   2025/12/21 21:59
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   trainer4seq2seq_attn.py
+# @File     :   seq2seq_attn_trainer.py
 # @Desc     :   
 
 from PySide6.QtCore import QObject, Signal
@@ -21,7 +21,7 @@ from src.utils.PT import get_device
 WIDTH: int = 64
 
 
-class TorchTrainer4SeqToSeq(QObject):
+class SeqToSeqWithAttnTorchTrainer(QObject):
     """ Trainer class for managing seq2seq training process """
     losses: Signal = Signal(int, float, float)
 
