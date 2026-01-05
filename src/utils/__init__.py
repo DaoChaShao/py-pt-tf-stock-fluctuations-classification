@@ -25,6 +25,7 @@ Main Categories:
 + PT: PyTorch tensor operations, device management, and network verification
 + SQL: SQLite database management
 + stats: Statistical analysis, data preprocessing, file I/O, and dimensionality reduction
++ TF: Hugging Face datasets loading, preprocessing, and tokenization utilities
 + THU: Chinese word segmentation with THULAC
 
 Usage:
@@ -35,7 +36,7 @@ Usage:
 """
 
 __author__ = "Shawn Yu"
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 from .apis import (OpenAITextCompleter, OpenAIImageCompleter,
                    DeepSeekCompleter)
@@ -68,6 +69,12 @@ from .stats import (NumpyRandomSeed,
                     pca_importance,
                     get_correlation_among_features,
                     get_categories_corr_ratio, get_correlation_among_Xy)
+from .TF import (load_ds_dict_locally, summary_ds_dict,
+                 StratifiedColConverter,
+                 check_label_distribution,
+                 split_ds_dict,
+                 HFDatasetTokeniser,
+                 load_hf_data_as_ds_dict)
 from .THU import THULACTokeniser
 
 __all__ = [
@@ -111,6 +118,13 @@ __all__ = [
     "pca_importance",
     "get_correlation_among_features",
     "get_categories_corr_ratio", "get_correlation_among_Xy",
+
+    "load_ds_dict_locally", "summary_ds_dict",
+    "StratifiedColConverter",
+    "check_label_distribution",
+    "split_ds_dict",
+    "HFDatasetTokeniser",
+    "load_hf_data_as_ds_dict",
 
     "THULACTokeniser",
 ]
