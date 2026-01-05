@@ -3,7 +3,7 @@
 # @Time     :   2025/12/30 15:53
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   trainer4seq2seq_tf.py
+# @File     :   seq2seq_tf_trainer.py
 # @Desc     :   
 
 from PySide6.QtCore import QObject, Signal
@@ -20,7 +20,7 @@ from src.utils.PT import get_device
 WIDTH: int = 64
 
 
-class SeqToSeqTransformerTrainer(QObject):
+class SeqToSeqTransformerTorchTrainer(QObject):
     """ Trainer class for managing seq2seq transformer training process """
     losses: Signal = Signal(int, float, float)
 
