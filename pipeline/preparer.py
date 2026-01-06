@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader
 
 from src.configs.cfg_hf import HF_CONFIG
 from src.dataloaders.seq2seq_hf_loader import HFDataLoaderForClassification
-from src.utils.TF import load_hf_data_as_ds_dict
+from src.utils.HF import load_hf_data_as_ds_dict
 from src.utils.helper import Timer
 from src.utils.highlighter import lines
 
@@ -28,6 +28,25 @@ def prepare_dataloader() -> tuple[DataLoader, DataLoader]:
         print("Dataset Checkpoint:")
         print(ds_dict["train"].features)
         print(ds_dict["valid"].features)
+        # print(ds_dict["test"].features)
+        """
+        ****************************************************************
+        DatasetDict({
+            train: Dataset({
+                features: ['PriceVariation', 'input_ids', 'token_type_ids', 'attention_mask'],
+                num_rows: 10071
+            })
+            valid: Dataset({
+                features: ['PriceVariation', 'input_ids', 'token_type_ids', 'attention_mask'],
+                num_rows: 3669
+            })
+            test: Dataset({
+                features: ['PriceVariation', 'input_ids', 'token_type_ids', 'attention_mask'],
+                num_rows: 648
+            })
+        })
+        ****************************************************************
+        """
 
         loader_train = HFDataLoaderForClassification(
             dataset=ds_dict["train"],
