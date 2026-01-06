@@ -1,10 +1,15 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-05)
+## [0.1.0](https://github.com///compare/3b34642e8339532b90e32e6b9668b44cdf020d7a...0.1.0) (2026-01-06)
 
 ### Features
 
+- update learning rate scheduler and loss function in trainer.py ([dda26b3](https://github.com///commit/dda26b3ea5e36eba8bc5fc5bbd9ca6df11f1d20a))
+- add training log for model performance metrics during training ([1b724e0](https://github.com///commit/1b724e0596093ee5d1be0c454c7bfaa7b40c53a5))
+- refactor training loop to streamline batch processing and add confusion metrics calculation ([410bb30](https://github.com///commit/410bb307701c4d8a5b7ce8a656f0f0e920d57fc2))
+- replace classification layer with multi-head architecture in seq2seq_hf.py ([16ba6ee](https://github.com///commit/16ba6ee96dff21ff676517b5f775ff41a9372f1e))
+- add requirements.txt for project dependencies ([2f133fc](https://github.com///commit/2f133fc1d7fd60327d40c7e6c565b330a3ce8baf))
 - add trainer.py for Seq2Seq model training and evaluation ([c269306](https://github.com///commit/c269306d2cf922629e6a2ad2782670821255c0ce))
 - add Seq2SeqHFTransformerTrainer class for training Hugging Face Seq2Seq models ([966f05a](https://github.com///commit/966f05a08049e10e8ca42f590153729a9bb616ca))
 - add Seq2SeqHFTransformer class for Hugging Face transformer model ([a0a7d53](https://github.com///commit/a0a7d53874e554d4968d1831708755efee72263f))
@@ -127,6 +132,7 @@
 
 ### Bug Fixes
 
+- adjust default learning rate and number of epochs in argument parser ([4024148](https://github.com///commit/4024148e719a6f4a755aa680f02fcfc709555ab2))
 - update tokenization process in processor.py for improved debugging ([69f11dd](https://github.com///commit/69f11dd811fa9522f40c3064a3fdbe90ead89ec8))
 - add debug print statements for dataset and DataLoader checkpoints in preparer.py ([8d5f794](https://github.com///commit/8d5f79464f8d164cb227b33bb61f74ac663d2af0))
 - update MultiTaskRNN to inherit from BaseRNN for correct architecture ([ec21f37](https://github.com///commit/ec21f371fa97275ac69870a08a9ef7ed45e0c2c7))
@@ -203,9 +209,10 @@
 
 ### Docs
 
+- add label distribution summary to preprocessor.py ([479f3c5](https://github.com///commit/479f3c5bf1c7a4ba916405066ab7d28f63015564))
+- update CHANGELOG.md with recent feature additions and bug fixes ([c3d6f65](https://github.com///commit/c3d6f654266b6bd2fc8c73420a845a9fccba5a89))
 - add local data path instructions for Hugging Face datasets in Chinese README ([84439e6](https://github.com///commit/84439e63c88cbcd27bb68e11f317ed88832fff02))
 - update README with local data path instructions for Hugging Face datasets ([1c1fece](https://github.com///commit/1c1fece4e5088ee1b2e51f07b84499504ccc66dd))
-- update CHANGELOG.md with recent feature additions and bug fixes ([0539fec](https://github.com///commit/0539fec515ba5c18b18e59a0aec331a9ec9359dc))
 
 ### Code Refactoring
 
