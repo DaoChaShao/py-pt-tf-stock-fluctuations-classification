@@ -5,6 +5,16 @@
 
 ### Features
 
+- add predictor.py for next word prediction using pretrained model ([bf465a3](https://github.com///commit/bf465a30e008a275f02f6b109149febdd19bb40d))
+- add prediction.py for model prediction and data selection interface ([7dd2ef4](https://github.com///commit/7dd2ef473d49791649f70e38daed2c7b0dc8c55e))
+- integrate page configuration and navigation setup in main.py ([8ca77c2](https://github.com///commit/8ca77c22b5fbfb6146481a1d906b25f6cbdb2f92))
+- add layout.py for page configuration and navigation setup ([432fd76](https://github.com///commit/432fd763e368478248e66921a642759d79412b2e))
+- add home.py for financial news and stock prediction interface ([0338229](https://github.com///commit/033822985366c29f0877f6d93249269f2f6784fb))
+- add evaluator.py for Next Word Prediction model evaluation ([48c1cfa](https://github.com///commit/48c1cfa1d66c32d21450e65d81a18a61da764a81))
+- add __init__.py for Next Word Prediction application package structure ([61684be](https://github.com///commit/61684becf997abcfec1d0f25ea5843eddddc9536))
+- add __init__.py to initialize package structure ([8c67d10](https://github.com///commit/8c67d102c9825c24043428f01eb61a52bb403519))
+- add __init__.py for multi-page structure in Next Word Prediction app ([6f349fc](https://github.com///commit/6f349fc67346669547872273571a605fadda0317))
+- add .gitignore to exclude Python-generated files and IDE configurations ([2b62614](https://github.com///commit/2b62614842a34f8d5794f9691efe3cc30da935ca))
 - update learning rate scheduler and loss function in trainer.py ([dda26b3](https://github.com///commit/dda26b3ea5e36eba8bc5fc5bbd9ca6df11f1d20a))
 - add training log for model performance metrics during training ([1b724e0](https://github.com///commit/1b724e0596093ee5d1be0c454c7bfaa7b40c53a5))
 - refactor training loop to streamline batch processing and add confusion metrics calculation ([410bb30](https://github.com///commit/410bb307701c4d8a5b7ce8a656f0f0e920d57fc2))
@@ -42,7 +52,6 @@
 - add configuration file for BERT model parameters ([7eba5e0](https://github.com///commit/7eba5e0e0398b3565e8c98d29b1f381912362cb5))
 - update HFParams to include TOKENISER and rename DATASET_NAME to DATASET ([9ff3f88](https://github.com///commit/9ff3f88be477ae57ca6f4e22183abc07da43d74a))
 - add TOKENIZER path to configuration ([c3ddc99](https://github.com///commit/c3ddc99be365bdaae045c96a8b6e7a2b6de7de75))
-- add .gitignore to exclude Python-generated files and IDE configurations ([e8c9ec7](https://github.com///commit/e8c9ec73332c004ad541bcd3a1d8d20468c6b196))
 - add uv.lock ([4a788c0](https://github.com///commit/4a788c04ff808018f22016332037dff30df8c532))
 - add dataset loading and processing functionalities in TF.py ([53c7ca2](https://github.com///commit/53c7ca236eefa6f80c372f763ab4563cbd1ee5d6))
 - add datasets dependency for data handling ([2061eec](https://github.com///commit/2061eecca7cc3c7c28ff9d5552e9d98336c80681))
@@ -132,6 +141,17 @@
 
 ### Bug Fixes
 
+- remove hardcoded num_labels in model configuration ([23e558e](https://github.com///commit/23e558e78da1ebd2715145ce00c156e210b7fded))
+- update fingerprint in state.json ([2f4bd90](https://github.com///commit/2f4bd90b8ec751ed1e5fde92c846816fb28cd8f9))
+- add keyword-only argument for embedding in item2tensor function ([705bc3e](https://github.com///commit/705bc3ebc9427afdecd05453bc09e0c9941d5d56))
+- update import path for HFDatasetTokeniser in processor.py ([5ed5d57](https://github.com///commit/5ed5d57a0ad0cd3e9d485d1887a4e2520d8e6a96))
+- update import path for utilities in preprocessor.py ([d64a495](https://github.com///commit/d64a495e6518b044fa0b923f59053a8721f97dd4))
+- update import path for load_hf_data_as_ds_dict in preparer.py ([79eef0b](https://github.com///commit/79eef0b9d2c2dff2d640d79ec098a608d348666d))
+- rename TF.py to HF.py for consistency with updated framework ([fcb209c](https://github.com///commit/fcb209ce8fa01b7378f9de0b90e6e6279dea6e0c))
+- adjust spacing for consistency in calc_seq_text_quilty.py ([7edb176](https://github.com///commit/7edb17625fbf4547fdb4560a2e47bb48ba7b33e6))
+- adjust spacing for consistency in calc_regression.py ([f265010](https://github.com///commit/f26501008c642f15e595256948ecd29c7837cd2f))
+- adjust formatting for consistency in calc_classification.py ([34310b3](https://github.com///commit/34310b38cb9a2477147d92fdbace84f55acab4b6))
+- update import statement from TF to HF in __init__.py ([8095a0c](https://github.com///commit/8095a0c94f1dc04424095a02b79e8adea3e9af6a))
 - adjust default learning rate and number of epochs in argument parser ([4024148](https://github.com///commit/4024148e719a6f4a755aa680f02fcfc709555ab2))
 - update tokenization process in processor.py for improved debugging ([69f11dd](https://github.com///commit/69f11dd811fa9522f40c3064a3fdbe90ead89ec8))
 - add debug print statements for dataset and DataLoader checkpoints in preparer.py ([8d5f794](https://github.com///commit/8d5f79464f8d164cb227b33bb61f74ac663d2af0))
@@ -209,8 +229,9 @@
 
 ### Docs
 
+- add instructions for using Git LFS to manage large files ([59dc92c](https://github.com///commit/59dc92c46bcfb84446e57659e49dee40747f0dac))
+- update CHANGELOG.md with recent feature additions and bug fixes ([d7b9416](https://github.com///commit/d7b9416546f09a94b58413658f9ccf8888c56448))
 - add label distribution summary to preprocessor.py ([479f3c5](https://github.com///commit/479f3c5bf1c7a4ba916405066ab7d28f63015564))
-- update CHANGELOG.md with recent feature additions and bug fixes ([c3d6f65](https://github.com///commit/c3d6f654266b6bd2fc8c73420a845a9fccba5a89))
 - add local data path instructions for Hugging Face datasets in Chinese README ([84439e6](https://github.com///commit/84439e63c88cbcd27bb68e11f317ed88832fff02))
 - update README with local data path instructions for Hugging Face datasets ([1c1fece](https://github.com///commit/1c1fece4e5088ee1b2e51f07b84499504ccc66dd))
 
