@@ -229,8 +229,12 @@
 
 ### Docs
 
+- update README.zh-CN.md to specify the use of a pretrained Transformer model ([c78d8eb](https://github.com///commit/c78d8ebc3596b563a3e5a0267ec74ae694dd0a88))
+- update README.md to specify the use of a pretrained Transformer-based model ([3a499d5](https://github.com///commit/3a499d5d3afd877a958fb06de289f72045849fac))
+- update README.zh-CN.md to include tracking for .safetensors files ([1dcad33](https://github.com///commit/1dcad33b690b77c091d3dcc28bc2daeb2da7b5c9))
+- update README.md to include tracking for .safetensors files ([1a07904](https://github.com///commit/1a079044e644f1d73136e99a030e81efcf13dcc1))
+- update CHANGELOG.md with recent feature additions and bug fixes ([b459a43](https://github.com///commit/b459a4357c8a55d2fc2cd42425d7f4debead420b))
 - add instructions for using Git LFS to manage large files ([59dc92c](https://github.com///commit/59dc92c46bcfb84446e57659e49dee40747f0dac))
-- update CHANGELOG.md with recent feature additions and bug fixes ([d7b9416](https://github.com///commit/d7b9416546f09a94b58413658f9ccf8888c56448))
 - add label distribution summary to preprocessor.py ([479f3c5](https://github.com///commit/479f3c5bf1c7a4ba916405066ab7d28f63015564))
 - add local data path instructions for Hugging Face datasets in Chinese README ([84439e6](https://github.com///commit/84439e63c88cbcd27bb68e11f317ed88832fff02))
 - update README with local data path instructions for Hugging Face datasets ([1c1fece](https://github.com///commit/1c1fece4e5088ee1b2e51f07b84499504ccc66dd))
