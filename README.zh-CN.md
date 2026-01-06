@@ -7,8 +7,9 @@
 ---
 本仓库展示了使用 **Hugging Face
 上的 [SelmaNajih001/FinancialClassification](https://huggingface.co/datasets/SelmaNajih001/FinancialClassification)
-数据集进行二分类任务** 的完整流程。目标是训练一个基于 Transformer 的模型，通过金融事件的文本描述预测股票价格是 **上涨** 还是
-**下跌**。
+数据集进行二分类任务** 的完整流程。目标是训练一个基于 Transformer
+的 **[预训练模型](https://huggingface.co/google-bert/bert-base-chinese)**，通过金融事件的文本描述预测股票价格是 **上涨**
+还是 **下跌**。
 
 我们将此任务设置为一个 **二分类问题**：
 
