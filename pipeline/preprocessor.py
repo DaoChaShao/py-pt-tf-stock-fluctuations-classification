@@ -10,7 +10,7 @@ from datasets import load_dataset, DatasetDict, ClassLabel
 from pathlib import Path
 
 from src.configs.cfg_hf import HF_CONFIG
-from src.utils.TF import (load_ds_dict_locally, summary_ds_dict,
+from src.utils.HF import (load_ds_dict_locally, summary_ds_dict,
                           StratifiedColConverter,
                           split_ds_dict, check_label_distribution)
 from src.utils.helper import Timer
