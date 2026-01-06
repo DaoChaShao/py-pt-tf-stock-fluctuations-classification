@@ -11,7 +11,6 @@ from torch import optim, nn
 from transformers import AutoConfig
 
 from src.configs.cfg_hf import HF_CONFIG
-from src.configs.cfg_enums import SpecialTokens
 from src.configs.parser import set_argument_parser
 from src.trainers.seq2seq_hf_trainer import Seq2SeqHFTransformerTrainer
 from src.nets.seq2seq_hf import Seq2SeqHFTransformer
@@ -43,8 +42,9 @@ def main() -> None:
         model = Seq2SeqHFTransformer(config.name_or_path, config, num_labels=2)
         # Setup optimizer and loss function
         optimizer = optim.AdamW(model.parameters(), lr=args.alpha, weight_decay=HF_CONFIG.HYPERPARAMETERS.DECAY)
-        scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="min", factor=0.5, patience=3)
-        criterion = nn.CrossEntropyLoss(ignore_index=0)
+        # scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="min", factor=0.5, patience=3)
+        scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-7)
+        criterion = nn.CrossEntropyLoss()
         model.summary()
         """
         ****************************************************************
@@ -79,13 +79,13 @@ def main() -> None:
             epochs=args.epochs,
             model_save_path=str(HF_CONFIG.FILE_PATHS.SAVED_NET),
             log_name=f"{HF_CONFIG.PARAMETERS.NET_CN.split("/")[1]}",
+            patience=5,
         )
         """
         ****************************************************************
         Training Summary:
         ----------------------------------------------------------------
-        "epoch": 92/200, "strategy": "greedy", "bleu": 0.2688, "rouge": 0.6271, "avg_pred_len": 7.5065, "perplexity": 7.3681
-        "epoch": 95/200, "strategy": "beam",   "bleu": 0.2116, "rouge": 0.5478, "avg_pred_len": 4.9998, "perplexity": 7.4765
+        "epoch": 8/100, "train_loss": 0.2203, "valid_loss": 0.2748, "accuracy": 0.8872, "precision": 0.8878, "recall": 0.8872, "f1_score": 0.8872
         ****************************************************************
         """
 
