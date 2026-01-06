@@ -22,10 +22,10 @@ def calculator_for_classification(outputs: list[int], targets: list[int]) -> dic
     dps: int = 4
 
     return {
-        "accuracy": round(float(accuracy_score(targets, outputs)), dps),
+        "accuracy":  round(float(accuracy_score(targets, outputs)), dps),
         "precision": round(float(precision_score(targets, outputs, average="weighted", zero_division=0)), dps),
-        "recall": round(float(recall_score(targets, outputs, average="weighted", zero_division=0)), dps),
-        "f1_score": round(float(f1_score(targets, outputs, average="weighted", zero_division=0)), dps),
+        "recall":    round(float(recall_score(targets, outputs, average="weighted", zero_division=0)), dps),
+        "f1_score":  round(float(f1_score(targets, outputs, average="weighted", zero_division=0)), dps),
     }
 
 
