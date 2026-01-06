@@ -13,7 +13,7 @@ from random import randint
 from pipeline.preprocessor import preprocess_data
 
 from src.configs.cfg_hf import HF_CONFIG
-from src.utils.TF import HFDatasetTokeniser
+from src.utils.HF import HFDatasetTokeniser
 from src.utils.helper import Timer
 from src.utils.highlighter import lines
 
