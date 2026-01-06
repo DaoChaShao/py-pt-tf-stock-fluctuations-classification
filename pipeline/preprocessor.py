@@ -51,6 +51,13 @@ def preprocess_data() -> DatasetDict:
             lines()
 
             check_label_distribution(ds_dict, col)
+            """
+            ****************************************************************
+            ClassLabel TRAIN      | Total:  10071 | Negative:  5177 (51.4%) | Positive:  4894 (48.6%) |
+            ClassLabel VALID      | Total:   3669 | Negative:  1886 (51.4%) | Positive:  1783 (48.6%) | 
+            ClassLabel TEST       | Total:    648 | Negative:   333 (51.4%) | Positive:   315 (48.6%) | 
+            ****************************************************************
+            """
 
             return ds_dict
 
