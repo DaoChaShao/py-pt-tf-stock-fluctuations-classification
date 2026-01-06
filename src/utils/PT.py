@@ -213,6 +213,7 @@ def get_device(accelerator: str | Literal["auto", "cuda", "cpu"] = "auto", cuda_
 
 def item2tensor(
         data: DataFrame | ndarray | list | int | float | number,
+        *,
         embedding: bool = False,
         accelerator: str | Literal["cuda", "cpu"] = "cpu", is_grad: bool = False
 ) -> Tensor:
