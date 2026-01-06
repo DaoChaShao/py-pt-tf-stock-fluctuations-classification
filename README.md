@@ -8,8 +8,9 @@
 
 This repository contains a demonstration of **binary classification using
 the [SelmaNajih001/FinancialClassification](https://huggingface.co/datasets/SelmaNajih001/FinancialClassification)
-dataset from Hugging Face**. The main goal is to train a Transformer-based model that can predict whether a stock's
-price will go **up** or **down** based on a natural language description of a financial event.
+dataset from Hugging Face**. The main goal is to train
+a **[pretrained Transformer-based model](https://huggingface.co/google-bert/bert-base-chinese)** that can predict
+whether a stock's price will go **up** or **down** based on a natural language description of a financial event.
 
 We treat this as a **binary classification task**:
 
