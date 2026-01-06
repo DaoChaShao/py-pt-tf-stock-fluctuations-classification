@@ -207,6 +207,7 @@
 3. 使用命令
     ```bash
     git lfs track "*.pth"
+    git lfs track "*.safetensors"
     ```
    跟踪大文件（您可以将`*.pth`替换为适当的文件扩展名）。
 4. 使用命令
@@ -216,9 +217,10 @@
    或图形界面将`.gitattributes`文件添加到版本控制中。
 5. 使用命令
     ```bash
-    git add models/unet4.pth
+    git add models/model.pth
+    git add models/model.safetensors
     ```
-   或图形界面将`unet4.pth`文件添加到版本控制中。
+   或图形界面将`model.pth`文件添加到版本控制中。
 6. 使用命令
     ```bash
     git commit -m "Track large files with Git LFS"
