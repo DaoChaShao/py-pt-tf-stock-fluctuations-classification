@@ -28,9 +28,9 @@ def calculator_for_regression(outputs: list[int], targets: list[int]) -> dict[st
 
     return {
         "rMse": round(rMse, dps),
-        "mse": round(mse, dps),
-        "mae": round(mae, dps),
-        "r2": round(r2, dps),
+        "mse":  round(mse, dps),
+        "mae":  round(mae, dps),
+        "r2":   round(r2, dps),
     }
 
 
