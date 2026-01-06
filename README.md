@@ -223,6 +223,7 @@ instructions as follows are only used to upload the large file to the remote rep
 3. Track the large files by using the command:
     ```bash
     git lfs track "*.pth"
+    git lfs track "*.safetensors"
     ```
    You can replace `*.pth` with the appropriate file extension.
 4. Add the `.gitattributes` file to version control using the UI interface or running the command:
@@ -232,7 +233,8 @@ instructions as follows are only used to upload the large file to the remote rep
 5. Add the `unet4.pth` file to version control using the UI interface or
    running the command:
     ```bash
-    git add models/unet4.pth
+    git add models/model.pth
+    git add models/model.safetensors
     ```
 6. Commit the changes using the UI interface or running the command:
     ```bash
