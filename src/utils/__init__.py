@@ -69,7 +69,7 @@ from .stats import (NumpyRandomSeed,
                     pca_importance,
                     get_correlation_among_features,
                     get_categories_corr_ratio, get_correlation_among_Xy)
-from .TF import (load_ds_dict_locally, summary_ds_dict,
+from .HF import (load_ds_dict_locally, summary_ds_dict,
                  StratifiedColConverter,
                  check_label_distribution,
                  split_ds_dict,
