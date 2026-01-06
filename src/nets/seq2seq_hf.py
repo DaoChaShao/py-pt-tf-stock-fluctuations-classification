@@ -27,15 +27,23 @@ class Seq2SeqHFTransformer(BaseHFPretrainedTransformer):
         super().__init__(model_name, config)
         self._classes = num_labels
 
-        # Initialise a classification layer
-        self._linear = nn.Linear(self.config.hidden_size, self._classes)
+        # Initialise a layer with head or heads
+        self._heads = nn.Sequential(
+            nn.Linear(self.config.hidden_size, 512),
+            nn.GELU(),
+            nn.Dropout(0.2),
+            nn.Linear(512, 256),
+            nn.GELU(),
+            nn.Dropout(0.1),
+            nn.Linear(256, self._classes)
+        )
 
     @override
     def forward(self, input_ids, attention_mask, token_type_ids):
         outputs = self.transformer(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
         outputs = outputs.last_hidden_state[:, 0, :]
         outputs = self.dropper(outputs)
-        logits = self._linear(outputs)
+        logits = self._heads(outputs)
 
         return logits
 
