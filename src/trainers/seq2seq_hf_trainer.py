@@ -14,6 +14,7 @@ from typing import Literal, override
 
 from src.trainers.base_trainer import BaseTorchTrainer
 from src.trainers.calc_classification import calculator_for_classification
+from src.trainers.calc_cm import calculator_for_confusion_metrics
 from src.utils.logger import record_log
 
 WIDTH: int = 64
@@ -57,20 +58,14 @@ class Seq2SeqHFTransformerTrainer(BaseTorchTrainer):
         _loss: float = 0.0
         _total: float = 0.0
         for batch in dataloader:
-            input_ids = batch["input_ids"].to(device(self._accelerator))
-            attention_mask = batch["attention_mask"].to(device(self._accelerator))
-            token_type_ids = batch.get("token_type_ids", None)
-            labels = batch["PriceVariation"].to(device(self._accelerator))
+            batch = {k: v.to(device(self._accelerator)) for k, v in batch.items()}
+            labels = batch.pop("PriceVariation")
 
             if labels.dim() > 1:
                 labels = labels.squeeze()
 
             self._optimiser.zero_grad()
-            outputs = self._model(
-                input_ids=input_ids,
-                attention_mask=attention_mask,
-                token_type_ids=token_type_ids,
-            )
+            outputs = self._model(**batch)
             # print(outputs.shape, labels.shape)
 
             loss = self._criterion(outputs, labels)
@@ -79,8 +74,8 @@ class Seq2SeqHFTransformerTrainer(BaseTorchTrainer):
 
             self._optimiser.step()
 
-            _loss += loss.item() * input_ids.size(0)
-            _total += input_ids.size(0)
+            _loss += loss.item() * next(iter(batch.values())).size(0)
+            _total += next(iter(batch.values())).size(0)
 
         return _loss / _total
 
@@ -100,16 +95,10 @@ class Seq2SeqHFTransformerTrainer(BaseTorchTrainer):
         _targets: list[int] = []
         with no_grad():
             for batch in dataloader:
-                input_ids = batch["input_ids"].to(device(self._accelerator))
-                attention_mask = batch["attention_mask"].to(device(self._accelerator))
-                token_type_ids = batch.get("token_type_ids", None)
-                labels = batch["PriceVariation"].to(device(self._accelerator))
+                batch = {k: v.to(device(self._accelerator)) for k, v in batch.items()}
+                labels = batch.pop("PriceVariation")
 
-                outputs = self._model(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask,
-                    token_type_ids=token_type_ids,
-                )
+                outputs = self._model(**batch)
                 # print(outputs.shape, labels.shape)
 
                 if labels.dim() > 1:
@@ -117,14 +106,15 @@ class Seq2SeqHFTransformerTrainer(BaseTorchTrainer):
                 # print(outputs.shape, labels.shape)
 
                 loss = self._criterion(outputs, labels)
-                _loss += loss.item() * input_ids.size(0)
-                _total += input_ids.size(0)
+                _loss += loss.item() * next(iter(batch.values())).size(0)
+                _total += next(iter(batch.values())).size(0)
 
                 _results.extend(outputs.argmax(dim=1).cpu().tolist())
                 _targets.extend(labels.cpu().tolist())
 
         _metrics: dict[str, float] = {
             **calculator_for_classification(_results, _targets),
+            **calculator_for_confusion_metrics(_results, _targets),
         }
 
         return _loss / _total, _metrics
@@ -132,6 +122,7 @@ class Seq2SeqHFTransformerTrainer(BaseTorchTrainer):
     @override
     def fit(self,
             train_loader: DataLoader, valid_loader: DataLoader, epochs: int,
+            *,
             model_save_path: str | None = None,
             log_name: str | None = None,
             patience: int = 5
