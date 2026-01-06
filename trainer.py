@@ -37,7 +37,6 @@ def main() -> None:
         else:
             print("Downloading pretrained model first")
             config = AutoConfig.from_pretrained(HF_CONFIG.PARAMETERS.NET_CN)
-        config.num_labels = 2
 
         model = Seq2SeqHFTransformer(config.name_or_path, config, num_labels=2)
         # Setup optimizer and loss function
